@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import About from '@/pages/About';
 import Articles from '@/pages/Articles';
+import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 
 Vue.use(Router);
@@ -30,6 +32,18 @@ export default new Router({
       path: '/projects',
       name: 'projects',
       component: Projects,
+    },
+
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+
+    {
+      path: '/cv',
+      name: 'cv',
+      component: CV,
     },
   ],
 });

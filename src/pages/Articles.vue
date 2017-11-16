@@ -1,6 +1,6 @@
 <template>
   <div>
-    <jch-hero title="Articles"></jch-hero>
+    <jch-hero :title="title" :subtitle="subtitle"></jch-hero>
 
     <section class="section">
       <div class="container">
@@ -22,6 +22,13 @@
     components: {
       JchContent,
       JchHero,
+    },
+
+    data() {
+      return {
+        title: 'Blog',
+        subtitle: '..whatever bothers me',
+      };
     },
   };
 </script>

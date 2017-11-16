@@ -44,5 +44,9 @@
     h1 {
       color: $white;
     }
+
+    .subtitle {
+      color: $theme-color-5;
+    }
   }
 </style>

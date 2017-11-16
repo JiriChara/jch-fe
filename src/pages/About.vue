@@ -5,11 +5,7 @@
     <section class="section">
       <div class="container">
         <jch-content>
-          Content
-
-          <p slot="side">
-            Custom content
-          </p>
+          Content...
         </jch-content>
       </div>
     </section>
@@ -21,7 +17,7 @@
   import JchHero from '@/components/layout/Hero';
 
   export default {
-    name: 'projects',
+    name: 'about',
 
     components: {
       JchContent,
@@ -30,8 +26,8 @@
 
     data() {
       return {
-        title: 'Projects',
-        subtitle: '..some of my creations',
+        title: 'About',
+        subtitle: '..who the.. ?',
       };
     },
   };
