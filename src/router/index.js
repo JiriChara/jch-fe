@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import About from '@/pages/About';
+import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
 import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
@@ -44,6 +45,12 @@ export default new Router({
       path: '/cv',
       name: 'cv',
       component: CV,
+    },
+
+    {
+      path: '/:slug',
+      name: 'article',
+      component: Article,
     },
   ],
 });

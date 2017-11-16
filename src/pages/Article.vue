@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <jch-hero :title="title" :subtitle="subtitle"></jch-hero>
+  <div v-if="currentArticle">
+    <jch-hero :title="title">
+      <jch-article-info-panel :article="currentArticle">
+      </jch-article-info-panel>
+    </jch-hero>
 
     <section class="section">
       <div class="container">
         <jch-content>
-          <jch-article v-for="article in articleList" key="article.id" :article="article">
-          </jch-article>
         </jch-content>
       </div>
     </section>
@@ -17,46 +18,45 @@
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   import JchArticle from '@/components/Article';
+  import JchArticleInfoPanel from '@/components/articles/InfoPanel';
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
 
   export default {
-    name: 'articles',
+    name: 'article',
 
     components: {
       JchArticle,
+      JchArticleInfoPanel,
       JchContent,
       JchHero,
     },
 
-    data() {
-      return {
-        title: 'Blog',
-        subtitle: '..whatever bothers me',
-      };
-    },
-
     computed: {
       ...mapGetters('articles', {
-        articleList: 'list',
+        articleById: 'byId',
       }),
 
       ...mapState([
         'route',
       ]),
+
+      currentArticle() {
+        return this.articleById(this.route.params.slug);
+      },
+
+      title() {
+        return this.currentArticle.title;
+      },
     },
 
     methods: {
       ...mapActions('articles', {
-        fetchArticles: 'fetchList',
+        fetchSingleArticle: 'fetchSingle',
       }),
 
       fetchData() {
-        const config = {
-          params: this.route.query,
-        };
-
-        return this.fetchArticles({ config })
+        return this.fetchSingleArticle({ id: this.route.params.slug })
           .then(() => this.$Progress.finish())
           .catch(() => this.$Progress.fail());
       },

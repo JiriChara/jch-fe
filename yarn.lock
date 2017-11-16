@@ -353,6 +353,13 @@ aws4@^1.2.1, aws4@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
+axios@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
+  dependencies:
+    follow-redirects "^1.2.5"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -1822,7 +1829,7 @@ de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
 
-debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.6.8:
+debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -2748,6 +2755,12 @@ flat-cache@^1.2.1:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+
+follow-redirects@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.2.5.tgz#ffd3e14cbdd5eaa72f61b6368c1f68516c2a26cc"
+  dependencies:
+    debug "^2.6.9"
 
 font-awesome@^4.7.0:
   version "4.7.0"
@@ -4462,6 +4475,10 @@ mocha@^4.0.1:
     he "1.1.1"
     mkdirp "0.5.1"
     supports-color "4.4.0"
+
+moment@^2.19.2:
+  version "2.19.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
 
 ms@0.7.1:
   version "0.7.1"
@@ -6800,6 +6817,10 @@ vue-template-es2015-compiler@^1.6.0:
 vue@^2.5.2:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.3.tgz#e1a3b1f49b6e93e574ce040b95cbc873912fecc1"
+
+vuex-crud@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/vuex-crud/-/vuex-crud-0.1.3.tgz#3d61a9ea78cc11f427b5804cf4a9931004256654"
 
 vuex-router-sync@^5.0.0:
   version "5.0.0"
