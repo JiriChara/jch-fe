@@ -1,6 +1,6 @@
 <template>
   <div>
-    <jch-hero title="Articles"></jch-hero>
+    <jch-hero title="Projects"></jch-hero>
 
     <section class="section">
       <div class="container">
@@ -14,7 +14,7 @@
   import JchHero from '@/components/layout/Hero';
 
   export default {
-    name: 'articles',
+    name: 'projects',
 
     components: {
       JchHero,

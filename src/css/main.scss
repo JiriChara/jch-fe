@@ -1,0 +1,21 @@
+@import './variables';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Barrio'); 
+
+// Normalize CSS
+@import '~normalize.css';
+
+// Font Awesome
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome.scss';
+
+// Buefy/Bulma
+// @import '~bulma/sass/utilities/_all';
+$primary: $theme-color-3;
+$link: $theme-color-5;
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
+
+// Code highlighting
+@import '~highlight.js/styles/atom-one-light';
