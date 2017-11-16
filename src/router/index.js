@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import store from '@/store';
 import About from '@/pages/About';
 import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
@@ -9,7 +10,7 @@ import Projects from '@/pages/Projects';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
 
   scrollBehavior(to) {
@@ -54,3 +55,12 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  // Hide menu on mobile when route is changed
+  store.dispatch('navbar/hideMobileMenu');
+
+  next();
+});
+
+export default router;

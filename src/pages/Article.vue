@@ -7,8 +7,6 @@
 
     <section class="section">
       <div class="container">
-        <jch-content>
-        </jch-content>
       </div>
     </section>
   </div>

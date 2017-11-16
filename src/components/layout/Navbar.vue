@@ -6,14 +6,17 @@
           <h1 class="title is-3"><span>J</span>iří <span>Ch</span>ára</h1>
         </router-link>
 
-        <button class="button navbar-burger">
+        <button class="button navbar-burger"
+          :class="{ 'is-active': isMobileMenuActive }"
+          @click="toggleMobileMenu">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
 
-      <div class="navbar-menu">
+      <div class="navbar-menu"
+        :class="{ 'is-active': isMobileMenuActive }">
         <div class="navbar-start">
           <router-link
             v-for="item in menuItems"
@@ -30,7 +33,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
 
   export default {
     name: 'jch-navbar',
@@ -38,6 +41,10 @@
     computed: {
       ...mapState([
         'route',
+      ]),
+
+      ...mapState('navbar', [
+        'isMobileMenuActive',
       ]),
 
       menuItems() {
@@ -67,6 +74,12 @@
           },
         ];
       },
+    },
+
+    methods: {
+      ...mapMutations('navbar', [
+        'toggleMobileMenu',
+      ]),
     },
   };
 </script>
