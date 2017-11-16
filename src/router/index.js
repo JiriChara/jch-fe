@@ -7,6 +7,18 @@ import Projects from '@/pages/Projects';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
+
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
+    return { x: 0, y: 0 };
+  },
+
   routes: [
     {
       path: '/',

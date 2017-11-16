@@ -21,7 +21,7 @@
             :key="item.title"
             class="navbar-item"
             :class="{ 'is-active': item.isSelected }">
-            {{ item.title }}
+            <span>{{ item.title }}</span>
           </router-link>
         </div>
       </div>
@@ -43,14 +43,27 @@
       menuItems() {
         return [
           {
-            title: 'Articles',
+            title: 'Blog',
             to: { name: 'articles' },
             isSelected: this.route.name === 'articles',
           },
+
           {
             title: 'Projects',
             to: { name: 'projects' },
             isSelected: this.route.name === 'projects',
+          },
+
+          {
+            title: 'About Me',
+            to: { name: 'about' },
+            isSelected: this.route.name === 'about',
+          },
+
+          {
+            title: 'Curriculum Vitae',
+            to: { name: 'cv' },
+            isSelected: this.route.name === 'cv',
           },
         ];
       },
@@ -80,5 +93,11 @@
 
   a {
     outline: 0;
+
+    &.is-active {
+      span::first-letter {
+        color: $theme-color-3;
+      }
+    }
   }
 </style>
