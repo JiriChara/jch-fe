@@ -59,7 +59,7 @@ export default {
         delete query.q;
       }
 
-      router.push({ name: 'blog', query });
+      router.push({ name: 'articles', query });
     },
 
     onSearchClear() {
@@ -68,12 +68,12 @@ export default {
       const query = Object.assign({}, this.route.query);
       delete query.q;
 
-      router.push({ name: 'blog', query });
+      router.push({ name: 'articles', query });
     },
 
     onShowAll() {
       this.searchTerm = '';
-      router.push({ name: 'blog' });
+      router.push({ name: 'articles' });
     },
   },
 };

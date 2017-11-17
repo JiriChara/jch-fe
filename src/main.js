@@ -11,12 +11,17 @@ import store from '@/store';
 import child from '@/child';
 
 import '@/css/main.scss';
+import JChLoader from '@/components/utils/Loader';
 
 Vue.config.productionTip = false;
 
 sync(store, router);
 
-Vue.use(Buefy);
+// Plugins
+Vue.use(Buefy, {
+  defaultIconPack: 'fa',
+  defaultContentElement: '#app',
+});
 
 Vue.use(VueProgressBar, {
   color: '#332532',
@@ -28,6 +33,9 @@ Vue.use(VueKindergarten, {
 });
 
 Vue.use(Vuelidate);
+
+// Global Components
+Vue.component('jch-loader', JChLoader);
 
 const app = new Vue({
   template: '<App/>',
