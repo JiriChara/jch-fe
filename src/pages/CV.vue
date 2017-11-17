@@ -27,7 +27,7 @@
     data() {
       return {
         title: 'Curriculum Vitae',
-        subtitle: '..in case you need a JS geek',
+        subtitle: '..in case of offers',
       };
     },
   };

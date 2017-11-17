@@ -1,12 +1,13 @@
 <template>
-  <div v-if="currentArticle">
+  <div v-if="article">
     <jch-hero :title="title">
-      <jch-article-info-panel :article="currentArticle">
+      <jch-article-info-panel :article="article">
       </jch-article-info-panel>
     </jch-hero>
 
     <section class="section">
       <div class="container">
+        <jch-article-content :article="article"></jch-article-content>
       </div>
     </section>
   </div>
@@ -16,6 +17,7 @@
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   import JchArticle from '@/components/Article';
+  import JchArticleContent from '@/components/articles/Content';
   import JchArticleInfoPanel from '@/components/articles/InfoPanel';
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
@@ -25,6 +27,7 @@
 
     components: {
       JchArticle,
+      JchArticleContent,
       JchArticleInfoPanel,
       JchContent,
       JchHero,
@@ -39,12 +42,12 @@
         'route',
       ]),
 
-      currentArticle() {
+      article() {
         return this.articleById(this.route.params.slug);
       },
 
       title() {
-        return this.currentArticle.title;
+        return this.article.title;
       },
     },
 

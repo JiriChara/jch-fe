@@ -1,6 +1,6 @@
 <template>
   <nav class="level">
-    <div class="level-item level-left">
+    <div class="level-item level-left" v-if="article.tags.length">
       <span class="panel-icon is-small">
         <i class="fa fa-tags"></i>
       </span>

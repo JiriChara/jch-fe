@@ -27,6 +27,32 @@
             <span>{{ item.title }}</span>
           </router-link>
         </div>
+
+        <div class="navbar-end">
+          <a href="https://github.com/JiriChara" class="navbar-item">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+
+          <a href="https://twitter.com/JiriChara" class="navbar-item">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/jirichara" class="navbar-item">
+            <span class="icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+
+          <a href="http://www.last.fm/user/Ch4rAss" class="navbar-item">
+            <span class="icon">
+              <i class="fa fa-lastfm"></i>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
@@ -111,6 +137,24 @@
       span::first-letter {
         color: $theme-color-3;
       }
+    }
+  }
+
+  .icon {
+    .fa-lastfm {
+      color: #b90000;
+    }
+
+    .fa-twitter {
+      color: #1da1f2;
+    }
+
+    .fa-linkedin {
+      color: #0084bf;
+    }
+
+    .fa-github {
+      color: #6a737d;
     }
   }
 </style>
