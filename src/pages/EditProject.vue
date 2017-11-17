@@ -18,7 +18,7 @@
   import JchProjectForm from '@/components/projects/Form';
 
   export default {
-    name: 'jch-edit-project',
+    name: 'edit-project',
 
     components: {
       JchProjectForm,

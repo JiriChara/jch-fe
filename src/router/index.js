@@ -8,6 +8,7 @@ import Articles from '@/pages/Articles';
 import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 import EditProject from '@/pages/EditProject';
+import NewProject from '@/pages/NewProject';
 
 Vue.use(Router);
 
@@ -35,6 +36,12 @@ const router = new Router({
       path: '/projects',
       name: 'projects',
       component: Projects,
+    },
+
+    {
+      path: '/projects/new',
+      name: 'new-project',
+      component: NewProject,
     },
 
     {

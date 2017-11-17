@@ -1,9 +1,24 @@
 <template>
-  <div>
-    <input
-      type="file"
-      @change="onChange" />
-  </div>
+  <b-field>
+    <b-upload v-model="files" @input="onChange">
+      <a class="button is-primary">
+        <b-icon pack="fa" icon="upload"></b-icon>
+        <span>Click to upload</span>
+      </a>
+    </b-upload>
+
+    <div v-if="files && files.length">
+      <span class="file-name">
+        <span>
+          {{ files[0].name }}
+        </span>
+      </span>
+    </div>
+
+    <span class="button remove" v-if="files.length" @click="deleteFile()">
+      <b-icon pack="fa" icon="trash"></b-icon>
+    </span>
+  </b-field>
 </template>
 
 <script>
@@ -12,14 +27,12 @@
 
     data() {
       return {
-        file: '',
+        files: [],
       };
     },
 
     methods: {
-      onChange(event) {
-        const files = event.target.files || event.dataTransfer.files;
-
+      onChange(files) {
         if (!files.length) return;
 
         const file = files[0];
@@ -39,6 +52,10 @@
         };
 
         reader.readAsDataURL(file);
+      },
+
+      deleteFile() {
+        this.files.splice(0, 1);
       },
     },
   };
