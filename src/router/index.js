@@ -7,6 +7,7 @@ import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
 import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
+import EditProject from '@/pages/EditProject';
 
 Vue.use(Router);
 
@@ -34,6 +35,12 @@ const router = new Router({
       path: '/projects',
       name: 'projects',
       component: Projects,
+    },
+
+    {
+      path: '/projects/:slug/edit',
+      name: 'edit-project',
+      component: EditProject,
     },
 
     {
