@@ -22,7 +22,13 @@
             </div>
           </nav>
 
-          <div class="tile is-ancestor" v-for="group in projectGroups">
+          <b-notification v-if="!isLoadingProjects && !projectGroups.length" type="is-info" has-icon :closable="false">
+            Ooops, no projects found..
+          </b-notification>
+
+          <jch-loader v-if="isLoadingProjects" />
+
+          <div class="tile is-ancestor" v-for="group in projectGroups" v-if="!isLoadingProjects">
             <div class="tile">
               <div class="tile is-parent" v-for="project in group" :key="project.id">
                 <article class="tile is-child">
@@ -72,6 +78,7 @@
     computed: {
       ...mapGetters('projects', {
         projectList: 'list',
+        isLoadingProjects: 'isLoading',
       }),
 
       projectGroups() {
