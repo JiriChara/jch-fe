@@ -19,3 +19,10 @@ $link: $theme-color-5;
 
 // Code highlighting
 @import '~highlight.js/styles/atom-one-light';
+
+.content pre {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 3px;
+  overflow-x: auto;
+}

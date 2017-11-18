@@ -70,7 +70,13 @@
 
       fetchData() {
         const config = {
-          params: this.route.query,
+          params: {
+            sort: {
+              column: 'published_at',
+              direction: 'desc',
+            },
+            ...this.route.query,
+          },
         };
 
         return this.fetchArticles({ config })

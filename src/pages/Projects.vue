@@ -29,9 +29,9 @@
           <jch-loader v-if="isLoadingProjects" />
 
           <div class="tile is-ancestor" v-for="group in projectGroups" v-if="!isLoadingProjects">
-            <div class="tile">
-              <div class="tile is-parent" v-for="project in group" :key="project.id">
-                <article class="tile is-child">
+            <div class="tile is-12">
+              <div class="tile is-parent is-6" v-for="project in group" :key="project.id">
+                <article class="tile is-child is-12">
                   <jch-project-card :project="project" />
                 </article>
               </div>
@@ -96,9 +96,18 @@
       }),
 
       fetchData() {
+        const config = {
+          params: {
+            sort: {
+              column: 'created_at',
+              direction: 'desc',
+            },
+          },
+        };
+
         this.$Progress.start();
 
-        return this.fetchProjects()
+        return this.fetchProjects({ config })
           .then(() => this.$Progress.finish())
           .catch(() => this.$Progress.fail());
       },
