@@ -1,4 +1,1 @@
-// TODO: implement login
-export default () => ({
-  role: 'admin',
-});
+export default store => store && store.state.tokens.currentUser;

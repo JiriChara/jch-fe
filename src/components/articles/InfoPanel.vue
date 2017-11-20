@@ -22,7 +22,7 @@
       <span class="panel-icon is-small">
         <i class="fa fa-clock-o"></i>
       </span>
-      <span>{{ articleCreatedAt }}</span>
+      <span>{{ articlePublishedAt }}</span>
     </div>
   </nav>
 </template>
@@ -52,8 +52,8 @@
         'route',
       ]),
 
-      articleCreatedAt() {
-        return moment(this.article.createdAt).fromNow();
+      articlePublishedAt() {
+        return moment(this.article.publishedAt).fromNow();
       },
     },
   };

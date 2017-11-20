@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import { createSandbox } from 'vue-kindergarten';
 
 import store from '@/store';
+import child from '@/child';
+import localStore from '@/utils/localStore';
 import About from '@/pages/About';
 import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
@@ -10,7 +13,11 @@ import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 import EditProject from '@/pages/EditProject';
 import NewProject from '@/pages/NewProject';
+import Login from '@/pages/Login';
+import SignUp from '@/pages/SignUp';
 import NotFound from '@/pages/NotFound';
+import RouteGoverness from '@/governesses/RouteGoverness';
+import loginPerimeter from '@/perimeters/login';
 
 Vue.use(Router);
 
@@ -77,6 +84,21 @@ const router = new Router({
     },
 
     {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        perimeter: loginPerimeter,
+      },
+    },
+
+    {
+      path: '/join',
+      name: 'sign-up',
+      component: SignUp,
+    },
+
+    {
       path: '*',
       name: 'not-found',
       component: NotFound,
@@ -84,11 +106,39 @@ const router = new Router({
   ],
 });
 
+const protectRoute = (routeRecord, to, form, next) => {
+  const perimeter = routeRecord.meta.perimeter;
+  const Governess = routeRecord.meta.governess || RouteGoverness;
+  const action = routeRecord.meta.perimeterAction || 'route';
+
+  if (perimeter) {
+    const sandbox = createSandbox(child(store), {
+      governess: new Governess(),
+
+      perimeters: [
+        perimeter,
+      ],
+    });
+
+    const guard = () => sandbox.guard(action, { next });
+
+    return guard();
+  }
+
+  return next();
+};
+
 router.beforeEach((to, from, next) => {
   // Hide menu on mobile when route is changed
   store.dispatch('navbar/hideMobileMenu');
 
-  next();
+  to.matched.some((routeRecord) => {
+    if (!child(store) && localStore.get('jwt')) {
+      return store.dispatch('tokens/loadCurrentUser').then(() => protectRoute(routeRecord, to, from, next));
+    }
+
+    return protectRoute(routeRecord, to, from, next);
+  });
 });
 
 export default router;

@@ -52,6 +52,11 @@
               <i class="fa fa-lastfm"></i>
             </span>
           </a>
+
+          <a v-if="$logout.isAllowed('route')" href="javascript:void(0);" class="navbar-item" @click="onLogout">
+            <b-icon icon="sign-out"></b-icon>
+            <span>Logout</span>
+          </a>
         </div>
       </div>
     </div>
@@ -59,10 +64,17 @@
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex';
+  import { mapState, mapMutations, mapActions } from 'vuex';
+
+  import router from '@/router';
+  import logoutPerimeter from '@/perimeters/logout';
 
   export default {
     name: 'jch-navbar',
+
+    perimeters: [
+      logoutPerimeter,
+    ],
 
     computed: {
       ...mapState([
@@ -106,6 +118,23 @@
       ...mapMutations('navbar', [
         'toggleMobileMenu',
       ]),
+
+      ...mapActions('tokens', [
+        'logout',
+      ]),
+
+      onLogout() {
+        this.logout().then(() => {
+          this.toggleMobileMenu();
+
+          router.push({ name: 'articles' });
+
+          this.$snackbar.open({
+            message: 'Successfully logged out',
+            type: 'is-success',
+          });
+        });
+      },
     },
   };
 </script>
