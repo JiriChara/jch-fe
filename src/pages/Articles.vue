@@ -5,6 +5,23 @@
     <section class="section">
       <div class="container">
         <jch-content>
+          <nav class="level">
+            <div class="level-left">
+            </div>
+
+            <div class="level-right">
+              <div class="level-item" v-if="$isAllowed('create')">
+                <router-link class="button" :to="{ name: 'new-article' }">
+                  <b-icon pack="fa" icon="plus"></b-icon>
+
+                  <span>
+                    Create Article
+                  </span>
+                </router-link>
+              </div>
+            </div>
+          </nav>
+
           <jch-article
             v-if="!isLoadingArticles"
             v-for="article in articleList"
@@ -34,6 +51,7 @@
   import JchArticleFilter from '@/components/articles/Filter';
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
+  import articlesPerimeter from '@/perimeters/articles';
 
   export default {
     name: 'articles',
@@ -44,6 +62,10 @@
       JchContent,
       JchHero,
     },
+
+    perimeters: [
+      articlesPerimeter,
+    ],
 
     data() {
       return {
@@ -75,6 +97,7 @@
               column: 'published_at',
               direction: 'desc',
             },
+            type: 'Article',
             ...this.route.query,
           },
         };

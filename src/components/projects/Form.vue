@@ -1,88 +1,49 @@
 <template>
   <form @submit="onSubmit">
-    <div class="field">
-      <label class="label">Name</label>
+    <b-field label="Name"
+      :type="$v.name.$error ? 'is-danger': null"
+      :message="nameErrorMessages">
 
-      <p class="control has-icon has-icon-right">
-        <input
-          ref="name"
-          class="input"
-          type="text"
-          v-model="name"
-          @input="$v.name.$touch()"
-          placeholder="Choose a name for your project"
-          autofocus />
+      <b-input
+        ref="name"
+        v-model="name"
+        @input="$v.name.$touch()"
+        @blur="$v.name.$touch()"
+        placeholder="Choose a name for your project"
+        autofocus />
+    </b-field>
 
-        <span v-if="$v.name.$error" class="icon is-small">
-          <i class="fa fa-warning"></i>
-        </span>
-      </p>
+    <b-field label="Image">
+      <jch-image-upload @load="onLoad" />
+    </b-field>
 
-      <p v-if="$v.name.$error" class="help is-danger">Name is required</p>
-    </div>
-
-    <div class="field">
-      <label class="label">Image</label>
-
-      <p class="control">
-        <jch-image-upload @load="onLoad" />
-      </p>
-    </div>
-
-    <div class="field">
-      <label class="label">Url</label>
-
-      <p class="control has-icon has-icon-right">
-        <input
-          ref="url"
-          class="input"
-          type="text"
+    <b-field label="Url"
+      :type="$v.url.$error ? 'is-danger': null"
+      :message="urlErrorMessages">
+        <b-input
           v-model="url"
           @input="$v.url.$touch()"
-          placeholder="Choose a url for your project"
-          autofocus />
+          @blur="$v.url.$touch()"
+          placeholder="Choose a URL for your project" />
+    </b-field>
 
-        <span v-if="$v.url.$error" class="icon is-small">
-          <i class="fa fa-warning"></i>
-        </span>
-      </p>
-
-      <p v-if="$v.url.$error" class="help is-danger">Url is required</p>
-    </div>
-
-    <div class="field">
-      <label class="label">Slug</label>
-
-      <p class="control">
-        <input
-          ref="slug"
-          class="input"
-          type="text"
+    <b-field label="Slug">
+        <b-input
           v-model="slug"
           @input="$v.slug.$touch()"
-          placeholder="Choose a slug for your project"
-          autofocus />
-      </p>
-    </div>
+          @blur="$v.slug.$touch()"
+          placeholder="Choose a slug for your project" />
+    </b-field>
 
-    <div class="field">
-      <label class="label">Description</label>
-
-      <p class="control">
-        <textarea
+    <b-field label="Description"
+      :type="$v.description.$error ? 'is-danger': null"
+      :message="descriptionErrorMessages">
+        <b-input
+          type="textarea"
           v-model="description"
           @input="$v.description.$touch()"
-          class="textarea"
-          placeholder="Textarea">
-        </textarea>
-
-        <span v-if="$v.description.$error" class="icon is-small">
-          <i class="fa fa-warning"></i>
-        </span>
-      </p>
-
-      <p v-if="$v.description.$error" class="help is-danger">Description is required</p>
-    </div>
+          @blur="$v.description.$touch()" />
+    </b-field>
 
     <div class="field is-grouped">
       <p class="control">
@@ -118,6 +79,44 @@
       },
     },
 
+    computed: {
+      nameErrorMessages() {
+        const messages = [];
+
+        if (this.$v.name.$error) {
+          if (!this.$v.name.required) {
+            messages.push('Name is required');
+          }
+        }
+
+        return messages;
+      },
+
+      urlErrorMessages() {
+        const messages = [];
+
+        if (this.$v.url.$error) {
+          if (!this.$v.url.required) {
+            messages.push('URL is required');
+          }
+        }
+
+        return messages;
+      },
+
+      descriptionErrorMessages() {
+        const messages = [];
+
+        if (this.$v.description.$error) {
+          if (!this.$v.description.required) {
+            messages.push('Description is required');
+          }
+        }
+
+        return messages;
+      },
+    },
+
     data() {
       return {
         name: this.project.name || '',
@@ -138,7 +137,7 @@
       },
 
       onReset() {
-        this.$emit('reset', this.serialize());
+        this.$emit('reset');
       },
 
       serialize() {
@@ -166,6 +165,10 @@
       },
 
       slug: {},
+    },
+
+    mounted() {
+      this.$refs.name.focus();
     },
   };
 </script>

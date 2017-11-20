@@ -1,7 +1,7 @@
 <template>
-  <b-field>
+  <div>
     <b-upload v-model="files" @input="onChange">
-      <a class="button is-primary">
+      <a class="button">
         <b-icon pack="fa" icon="upload"></b-icon>
         <span>Click to upload</span>
       </a>
@@ -18,7 +18,7 @@
     <span class="button remove" v-if="files.length" @click="deleteFile()">
       <b-icon pack="fa" icon="trash"></b-icon>
     </span>
-  </b-field>
+  </div>
 </template>
 
 <script>

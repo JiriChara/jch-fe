@@ -5,6 +5,7 @@ import store from '@/store';
 import About from '@/pages/About';
 import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
+import NewArticle from '@/pages/NewArticle';
 import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 import EditProject from '@/pages/EditProject';
@@ -30,6 +31,18 @@ const router = new Router({
       path: '/',
       name: 'articles',
       component: Articles,
+    },
+
+    {
+      path: 'articles/:slug',
+      name: 'article',
+      component: Article,
+    },
+
+    {
+      path: 'articles/new',
+      name: 'new-article',
+      component: NewArticle,
     },
 
     {
@@ -60,12 +73,6 @@ const router = new Router({
       path: '/cv',
       name: 'cv',
       component: CV,
-    },
-
-    {
-      path: '/:slug',
-      name: 'article',
-      component: Article,
     },
   ],
 });
