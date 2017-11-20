@@ -8,7 +8,6 @@
         ref="name"
         v-model="name"
         @input="$v.name.$touch()"
-        @blur="$v.name.$touch()"
         placeholder="Choose a name for your project"
         autofocus />
     </b-field>
@@ -23,7 +22,6 @@
         <b-input
           v-model="url"
           @input="$v.url.$touch()"
-          @blur="$v.url.$touch()"
           placeholder="Choose a URL for your project" />
     </b-field>
 
@@ -31,7 +29,6 @@
         <b-input
           v-model="slug"
           @input="$v.slug.$touch()"
-          @blur="$v.slug.$touch()"
           placeholder="Choose a slug for your project" />
     </b-field>
 
@@ -41,11 +38,10 @@
         <b-input
           type="textarea"
           v-model="description"
-          @input="$v.description.$touch()"
-          @blur="$v.description.$touch()" />
+          @input="$v.description.$touch()" />
     </b-field>
 
-    <div class="field is-grouped">
+    <b-field grouped>
       <p class="control">
         <button
           class="button is-primary"
@@ -58,7 +54,7 @@
       <p class="control">
         <button @click.prevent="onReset" class="button is-link">Cancel</button>
       </p>
-    </div>
+    </b-field>
   </form>
 </template>
 
@@ -68,6 +64,8 @@
   import ImageUpload from '@/components/utils/ImageUpload';
 
   export default {
+    name: 'jch-project-form',
+
     components: {
       'jch-image-upload': ImageUpload,
     },
@@ -77,6 +75,16 @@
         type: Object,
         default: () => ({}),
       },
+    },
+
+    data() {
+      return {
+        name: this.project.name || '',
+        slug: this.project.slug || '',
+        url: this.project.url || '',
+        description: this.project.description || '',
+        image: this.project.image || '',
+      };
     },
 
     computed: {
@@ -115,16 +123,6 @@
 
         return messages;
       },
-    },
-
-    data() {
-      return {
-        name: this.project.name || '',
-        slug: this.project.slug || '',
-        url: this.project.url || '',
-        description: this.project.description || '',
-        image: this.project.image || '',
-      };
     },
 
     methods: {

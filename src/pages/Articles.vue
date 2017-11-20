@@ -98,6 +98,7 @@
               direction: 'desc',
             },
             type: 'Article',
+            published: true,
             ...this.route.query,
           },
         };

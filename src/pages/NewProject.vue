@@ -63,10 +63,6 @@
       onReset() {
         router.push({ name: 'projects' });
       },
-
-      onLoad(file) {
-        this.image = file;
-      },
     },
   };
 </script>

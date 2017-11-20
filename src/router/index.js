@@ -10,6 +10,7 @@ import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 import EditProject from '@/pages/EditProject';
 import NewProject from '@/pages/NewProject';
+import NotFound from '@/pages/NotFound';
 
 Vue.use(Router);
 
@@ -34,15 +35,15 @@ const router = new Router({
     },
 
     {
-      path: 'articles/:slug',
-      name: 'article',
-      component: Article,
+      path: '/articles/new',
+      name: 'new-article',
+      component: NewArticle,
     },
 
     {
-      path: 'articles/new',
-      name: 'new-article',
-      component: NewArticle,
+      path: '/articles/:slug',
+      name: 'article',
+      component: Article,
     },
 
     {
@@ -73,6 +74,12 @@ const router = new Router({
       path: '/cv',
       name: 'cv',
       component: CV,
+    },
+
+    {
+      path: '*',
+      name: 'not-found',
+      component: NotFound,
     },
   ],
 });

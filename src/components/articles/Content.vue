@@ -1,5 +1,5 @@
 <template>
-  <div v-markdown="article.content"></div>
+  <div class="content" v-markdown="article.content"></div>
 </template>
 
 <script>
