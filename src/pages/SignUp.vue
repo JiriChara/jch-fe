@@ -4,7 +4,7 @@
 
     <section class="section">
       <div class="container">
-        <jch-sign-up-form @submit="onSubmit" @reset="onReset" />
+        <jch-sign-up-form @submit="onSubmit" />
       </div>
     </section>
   </div>
@@ -58,12 +58,6 @@
 
             this.$Progress.fail();
           });
-      },
-
-      onReset() {
-        router.push({
-          name: 'articles',
-        });
       },
     },
   };

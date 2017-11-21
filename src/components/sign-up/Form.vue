@@ -48,12 +48,8 @@
           class="button is-primary"
           :disabled="$v.$invalid"
           @click.prevent="onSubmit">
-          Submit
+          Sign Up
         </button>
-      </p>
-
-      <p class="control">
-        <button @click.prevent="onReset" class="button is-link">Cancel</button>
       </p>
     </b-field>
   </form>
@@ -139,10 +135,6 @@
     methods: {
       onSubmit() {
         this.$emit('submit', this.serialize());
-      },
-
-      onReset() {
-        this.$emit('reset');
       },
 
       serialize() {
