@@ -27,11 +27,15 @@
           @input="$v.content.$touch()" />
     </b-field>
 
+    <b-field label="Publish?">
+      <b-switch v-model="isPublished"></b-switch>
+    </b-field>
+
     <b-field label="Published At Date">
       <b-datepicker
+        :disabled="!isPublished"
         v-model="publishedAtDate"
-        placeholder="Click to select..."
-        inline>
+        placeholder="Click to select...">
 
         <button class="button is-primary"
           @click.prevent="publishedAtDate = new Date()">
@@ -43,9 +47,9 @@
 
     <b-field label="Published At Time">
       <b-timepicker
+        :disabled="!isPublished"
         v-model="publishedAtTime"
         placeholder="Click to select..."
-        inline
         hour-format="24">
       </b-timepicker>
     </b-field>
@@ -100,6 +104,7 @@
         publishedAtDate: moment(this.article.publishedAt).toDate(),
         publishedAtTime: moment(this.article.publishedAt).toDate(),
         type: this.article.type || 'Article',
+        isPublished: !!this.article.publishedAt || false,
       };
     },
 
@@ -155,12 +160,12 @@
           title: this.title,
           slug: this.slug,
           content: this.content,
-          publishedAt: moment(this.publishedAtDate).set({
+          publishedAt: this.isPublished ? moment(this.publishedAtDate).set({
             hour: moment(this.publishedAtTime).get('hour'),
             minute: moment(this.publishedAtTime).get('minute'),
             second: 0,
             millisecond: 0,
-          }).toISOString(),
+          }).toISOString() : null,
           type: this.type,
         };
       },
