@@ -161,6 +161,7 @@
             second: 0,
             millisecond: 0,
           }).toISOString(),
+          type: this.type,
         };
       },
     },

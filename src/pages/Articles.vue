@@ -97,7 +97,7 @@
               column: 'published_at',
               direction: 'desc',
             },
-            type: 'Article',
+            byType: 'Article',
             published: true,
             ...this.route.query,
           },

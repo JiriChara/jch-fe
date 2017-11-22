@@ -4,7 +4,13 @@
 
     <section class="section">
       <div class="container">
-        <jch-article-content :article="cv" v-if="cv"></jch-article-content>
+        <jch-article-content :article="cv" v-if="cv && !isLoadingArticles"></jch-article-content>
+
+        <b-notification v-if="!isLoadingArticles && !cv" type="is-info" has-icon :closable="false">
+          Ooops, no CV found..
+        </b-notification>
+
+        <jch-loader v-if="isLoadingArticles" />
       </div>
     </section>
   </div>
@@ -60,7 +66,7 @@
               column: 'published_at',
               direction: 'desc',
             },
-            type: 'CV',
+            byType: 'CV',
           },
         };
 
