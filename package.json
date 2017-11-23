@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
+    "start": "node build/server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "buefy": "^0.6.1",
+    "compression": "^1.7.1",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.12.0",
     "jwt-decode": "^2.2.0",

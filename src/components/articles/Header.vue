@@ -62,13 +62,15 @@
 <style lang="scss" scoped>
   @import '../../css/variables';
 
-  h1 {
-    color: $theme-color-2;
-    border-bottom: 2px solid $theme-color-2;
-    font-family: 'Barrio', cursive;
+  .content {
+    h1 {
+      color: $theme-color-2;
+      border-bottom: 2px solid $theme-color-2;
+      font-family: 'Barrio', cursive;
 
-    span {
-      color: $theme-color-3;
+      span {
+        color: $theme-color-3;
+      }
     }
   }
 </style>
