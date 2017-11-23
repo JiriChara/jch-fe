@@ -18,7 +18,7 @@
   import JchArticleForm from '@/components/articles/Form';
 
   export default {
-    name: 'new-project',
+    name: 'new-article',
 
     components: {
       JchHero,

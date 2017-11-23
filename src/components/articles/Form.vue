@@ -27,12 +27,19 @@
           @input="$v.content.$touch()" />
     </b-field>
 
+    <jch-image-uploader
+      v-if="article.createdAt"
+      :imageable-id="article.id"
+      imageable-type="Article">
+    </jch-image-uploader>
+
     <b-field label="Publish?">
       <b-switch v-model="isPublished"></b-switch>
     </b-field>
 
     <b-field label="Published At Date">
       <b-datepicker
+        inline
         :disabled="!isPublished"
         v-model="publishedAtDate"
         placeholder="Click to select...">
@@ -47,10 +54,17 @@
 
     <b-field label="Published At Time">
       <b-timepicker
+        inline
         :disabled="!isPublished"
         v-model="publishedAtTime"
         placeholder="Click to select..."
         hour-format="24">
+
+        <button class="button is-primary"
+          @click.prevent="publishedAtTime = new Date()">
+          <b-icon icon="clock-o"></b-icon>
+          <span>Now</span>
+        </button>
       </b-timepicker>
     </b-field>
 
@@ -86,6 +100,8 @@
   import moment from 'moment';
   import { required } from 'vuelidate/lib/validators';
 
+  import JchImageUploader from '@/components/images/Uploader';
+
   export default {
     name: 'jch-article-form',
 
@@ -96,11 +112,15 @@
       },
     },
 
+    components: {
+      JchImageUploader,
+    },
+
     data() {
       return {
         title: this.article.title || '',
         slug: this.article.slug || '',
-        content: this.article.slug || '',
+        content: this.article.content || '',
         publishedAtDate: moment(this.article.publishedAt).toDate(),
         publishedAtTime: moment(this.article.publishedAt).toDate(),
         type: this.article.type || 'Article',

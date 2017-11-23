@@ -8,14 +8,18 @@
     </b-upload>
 
     <div v-if="files && files.length">
-      <span class="file-name">
+      <span class="file-name button">
+        <span class="icon">
+          <img class="preview" :src="preview" />
+        </span>
+
         <span>
           {{ files[0].name }}
         </span>
       </span>
     </div>
 
-    <span class="button remove" v-if="files.length" @click="deleteFile()">
+    <span class="button remove" v-if="files.length" @click="onDeleteFile()">
       <b-icon pack="fa" icon="trash"></b-icon>
     </span>
   </b-field>
@@ -28,6 +32,7 @@
     data() {
       return {
         files: [],
+        preview: null,
       };
     },
 
@@ -54,9 +59,12 @@
         reader.readAsDataURL(file);
       },
 
-      deleteFile() {
+      onDeleteFile() {
         this.files.splice(0, 1);
       },
     },
   };
 </script>
+
+<style lang="scss" scoped>
+</style>

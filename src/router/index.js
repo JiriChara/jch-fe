@@ -9,6 +9,7 @@ import About from '@/pages/About';
 import Article from '@/pages/Article';
 import Articles from '@/pages/Articles';
 import NewArticle from '@/pages/NewArticle';
+import EditArticle from '@/pages/EditArticle';
 import CV from '@/pages/CV';
 import Projects from '@/pages/Projects';
 import EditProject from '@/pages/EditProject';
@@ -51,6 +52,12 @@ const router = new Router({
       path: '/articles/:slug',
       name: 'article',
       component: Article,
+    },
+
+    {
+      path: '/articles/:slug/edit',
+      name: 'edit-article',
+      component: EditArticle,
     },
 
     {
