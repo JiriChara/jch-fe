@@ -1,1 +1,1 @@
-export default store => store && store.state.tokens.currentUser;
+export default store => store && store.state.me.currentUser;

@@ -1,5 +1,3 @@
-import jwtDecode from 'jwt-decode';
-
 import client from '@/utils/client';
 import localStore from '@/utils/localStore';
 
@@ -10,7 +8,6 @@ export default {
     jwt: null,
     error: null,
     isLoading: false,
-    currentUser: null,
   },
 
   actions: {
@@ -34,16 +31,6 @@ export default {
           return Promise.reject(err);
         });
     },
-
-    loadCurrentUser({ commit }) {
-      // TODO: do API request (to refresh roles etc...)
-      commit('setCurrentUser', localStore.get('jwt'));
-    },
-
-    logout({ commit }) {
-      commit('unsetCurrentUser');
-      Promise.resolve(localStore.remove('jwt'));
-    },
   },
 
   mutations: {
@@ -55,14 +42,6 @@ export default {
       state.token = jwt;
       state.isLoading = false;
       state.error = false;
-    },
-
-    setCurrentUser(state, jwt) {
-      state.currentUser = jwtDecode(jwt);
-    },
-
-    unsetCurrentUser(state) {
-      state.currentUser = null;
     },
 
     createError(state, err) {

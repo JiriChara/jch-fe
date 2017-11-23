@@ -141,7 +141,7 @@ router.beforeEach((to, from, next) => {
 
   to.matched.some((routeRecord) => {
     if (!child(store) && localStore.get('jwt')) {
-      return store.dispatch('tokens/loadCurrentUser').then(() => protectRoute(routeRecord, to, from, next));
+      return store.dispatch('me/fetch').then(() => protectRoute(routeRecord, to, from, next));
     }
 
     return protectRoute(routeRecord, to, from, next);

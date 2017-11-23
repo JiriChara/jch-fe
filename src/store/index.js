@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import articles from '@/store/articles';
 import images from '@/store/images';
+import me from '@/store/me';
 import navbar from '@/store/navbar';
 import projects from '@/store/projects';
 import tags from '@/store/tags';
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   modules: {
     articles,
     images,
+    me,
     navbar,
     projects,
     tags,

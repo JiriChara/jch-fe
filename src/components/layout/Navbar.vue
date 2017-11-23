@@ -119,7 +119,7 @@
         'toggleMobileMenu',
       ]),
 
-      ...mapActions('tokens', [
+      ...mapActions('me', [
         'logout',
       ]),
 
