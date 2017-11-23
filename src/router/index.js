@@ -18,7 +18,10 @@ import Login from '@/pages/Login';
 import SignUp from '@/pages/SignUp';
 import NotFound from '@/pages/NotFound';
 import RouteGoverness from '@/governesses/RouteGoverness';
+import articlesPerimeter from '@/perimeters/articles';
 import loginPerimeter from '@/perimeters/login';
+import projectsPerimeter from '@/perimeters/projects';
+import signUpPerimeter from '@/perimeters/signUp';
 
 Vue.use(Router);
 
@@ -40,42 +43,70 @@ const router = new Router({
       path: '/',
       name: 'articles',
       component: Articles,
+      meta: {
+        perimeter: articlesPerimeter,
+        perimeterAction: 'viewList',
+      },
     },
 
     {
       path: '/articles/new',
       name: 'new-article',
       component: NewArticle,
+      meta: {
+        perimeter: articlesPerimeter,
+        perimeterAction: 'create',
+      },
     },
 
     {
       path: '/articles/:slug',
       name: 'article',
       component: Article,
+      meta: {
+        perimeter: articlesPerimeter,
+        perimeterAction: 'viewSingle',
+      },
     },
 
     {
       path: '/articles/:slug/edit',
       name: 'edit-article',
       component: EditArticle,
+      meta: {
+        perimeter: articlesPerimeter,
+        perimeterAction: 'update',
+      },
     },
 
     {
       path: '/projects',
       name: 'projects',
       component: Projects,
+      meta: {
+        perimeter: projectsPerimeter,
+        perimeterAction: 'viewList',
+      },
     },
 
     {
       path: '/projects/new',
       name: 'new-project',
       component: NewProject,
+      meta: {
+        perimeter: projectsPerimeter,
+        perimeterAction: 'create',
+      },
     },
 
     {
       path: '/projects/:slug/edit',
       name: 'edit-project',
       component: EditProject,
+      meta: {
+        perimeter: projectsPerimeter,
+        perimeterAction: 'update',
+      },
     },
 
     {
@@ -103,6 +134,9 @@ const router = new Router({
       path: '/join',
       name: 'sign-up',
       component: SignUp,
+      meta: {
+        perimeter: signUpPerimeter,
+      },
     },
 
     {
