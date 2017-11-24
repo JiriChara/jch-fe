@@ -14,7 +14,6 @@
 <script>
   import JchFooter from '@/components/layout/Footer';
   import JchNavbar from '@/components/layout/Navbar';
-  import JchSidebar from '@/components/layout/Sidebar';
 
   export default {
     name: 'app',
@@ -22,7 +21,6 @@
     components: {
       JchFooter,
       JchNavbar,
-      JchSidebar,
     },
 
     created() {
