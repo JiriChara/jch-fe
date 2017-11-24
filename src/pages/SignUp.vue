@@ -36,28 +36,39 @@
         createUser: 'create',
       }),
 
-      onSubmit(user) {
+      ...mapActions('tokens', {
+        createToken: 'create',
+      }),
+
+      async onSubmit(user) {
         this.$Progress.start();
 
-        return this.createUser({ data: { user } })
-          .then(() => {
-            router.push({ name: 'articles' });
+        try {
+          await this.createUser({ data: { user } });
 
-            this.$snackbar.open({
-              message: 'Successfully signed up',
-              type: 'is-success',
-            });
+          const auth = {
+            email: user.email,
+            password: user.password,
+          };
 
-            this.$Progress.finish();
-          })
-          .catch(() => {
-            this.$snackbar.open({
-              message: 'Can\'t sign up',
-              type: 'is-danger',
-            });
+          await this.createToken({ data: { auth } });
 
-            this.$Progress.fail();
+          router.push({ name: 'articles' });
+
+          this.$snackbar.open({
+            message: 'Successfully signed up',
+            type: 'is-success',
           });
+
+          this.$Progress.finish();
+        } catch (e) {
+          this.$snackbar.open({
+            message: 'Can\'t sign up',
+            type: 'is-danger',
+          });
+
+          this.$Progress.fail();
+        }
       },
     },
   };

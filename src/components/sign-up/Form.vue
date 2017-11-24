@@ -5,6 +5,7 @@
       :message="nameErrorMessages">
       <b-input
         ref="name"
+        name="name"
         v-model="name"
         @input="$v.name.$touch()"
         placeholder="Your name"
@@ -15,7 +16,7 @@
       :type="$v.email.$error ? 'is-danger': null"
       :message="emailErrorMessages">
       <b-input
-        ref="email"
+        name="email"
         v-model="email"
         @input="$v.email.$touch()"
         placeholder="Your email"
@@ -27,6 +28,7 @@
       :message="passwordErrorMessages">
       <b-input
         v-model="password"
+        name="password"
         @input="$v.password.$touch()"
         placeholder="Your password"
         type="password" />
@@ -36,6 +38,7 @@
       :type="$v.passwordConfirmation.$error ? 'is-danger': null"
       :message="passwordConfirmationErrorMessages">
       <b-input
+        name="password-confirmation"
         v-model="passwordConfirmation"
         @input="$v.passwordConfirmation.$touch()"
         placeholder="Retype your password"
@@ -45,7 +48,7 @@
     <b-field grouped>
       <p class="control">
         <button
-          class="button is-primary"
+          class="submit button is-primary"
           :disabled="$v.$invalid"
           @click.prevent="onSubmit">
           Sign Up

@@ -53,7 +53,7 @@
             </span>
           </a>
 
-          <a v-if="$logout.isAllowed('route')" href="javascript:void(0);" class="navbar-item" @click="onLogout">
+          <a v-if="$logout.isAllowed('route')" href="javascript:void(0);" class="navbar-item logout" @click="onLogout">
             <b-icon icon="sign-out"></b-icon>
             <span>Logout</span>
           </a>

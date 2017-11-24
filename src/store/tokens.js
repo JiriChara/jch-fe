@@ -19,7 +19,6 @@ export default {
           const jwt = res.data.jwt;
 
           commit('setJWT', jwt);
-          commit('setCurrentUser', jwt);
 
           localStore.set('jwt', jwt);
 
