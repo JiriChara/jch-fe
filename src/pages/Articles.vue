@@ -22,18 +22,34 @@
             </div>
           </nav>
 
-          <jch-article
-            v-if="!isLoadingArticles"
-            v-for="article in articleList"
-            key="article.id"
-            :article="article">
-          </jch-article>
+          <div v-if="!isLoadingArticles || isLoadingNextArticlePage">
+            <jch-article
+              v-for="article in articleList"
+              key="article.id"
+              :article="article">
+            </jch-article>
+
+            <nav class="level" v-if="!isLoadingNextArticlePage && !isLoadingArticles">
+              <p class="level-item has-text-centered">
+                <button
+                  class="button"
+                  @click.prevent="onFetchNextPage"
+                  v-if="hasNextArticlesPage">
+                  more..
+                </button>
+              </p>
+            </nav>
+          </div>
 
           <b-notification v-if="!isLoadingArticles && !articleList.length" type="is-info" has-icon :closable="false">
             Ooops, no articles found..
           </b-notification>
 
-          <jch-loader v-if="isLoadingArticles" />
+          <nav class="level">
+            <p class="level-item has-text-centered">
+              <jch-loader v-if="isLoadingArticles" />
+            </p>
+          </nav>
 
           <p slot="side">
             <jch-article-filter></jch-article-filter>
@@ -71,6 +87,7 @@
       return {
         title: 'Blog',
         subtitle: '..whatever bothers me',
+        isLoadingNextArticlePage: false,
       };
     },
 
@@ -78,6 +95,8 @@
       ...mapGetters('articles', {
         articleList: 'list',
         isLoadingArticles: 'isLoading',
+        hasNextArticlesPage: 'hasNextPage',
+        currentArticlesPage: 'currentPage',
       }),
 
       ...mapState([
@@ -90,7 +109,9 @@
         fetchArticles: 'fetchList',
       }),
 
-      fetchData() {
+      fetchData({ nextPage = false } = {}) {
+        this.isLoadingNextArticlePage = nextPage;
+
         const config = {
           params: {
             sort: {
@@ -100,12 +121,25 @@
             byType: 'Article',
             published: true,
             ...this.route.query,
+            page: {
+              number: nextPage ? this.currentArticlesPage + 1 : 1,
+            },
           },
         };
 
         return this.fetchArticles({ config })
-          .then(() => this.$Progress.finish())
-          .catch(() => this.$Progress.fail());
+          .then(() => {
+            this.isLoadingNextArticlePage = false;
+            this.$Progress.finish();
+          })
+          .catch(() => {
+            this.isLoadingNextArticlePage = false;
+            this.$Progress.fail();
+          });
+      },
+
+      onFetchNextPage() {
+        this.fetchData({ nextPage: true });
       },
     },
 

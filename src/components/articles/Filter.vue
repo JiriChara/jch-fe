@@ -51,7 +51,7 @@
     </a>
 
     <small class="panel-block" v-show="route.path === '/'">
-      Showing {{ articleList.length }} articles of {{ articles.paginationMeta.total }}
+      Showing {{ articleList.length }} articles of {{ articlesTotal }}
     </small>
   </nav>
 </template>
@@ -71,6 +71,7 @@
     computed: {
       ...mapGetters('articles', {
         articleList: 'list',
+        articlesTotal: 'total',
       }),
 
       ...mapGetters('tags', {
@@ -79,7 +80,6 @@
 
       ...mapState([
         'route',
-        'articles',
       ]),
     },
 
