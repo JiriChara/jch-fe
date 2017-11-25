@@ -10,7 +10,11 @@
           Ooops, no CV found..
         </b-notification>
 
-        <jch-loader v-if="isLoadingArticles" />
+        <nav class="level">
+          <p class="level-item has-text-centered">
+            <jch-loader v-if="isLoadingArticles" />
+          </p>
+        </nav>
       </div>
     </section>
   </div>

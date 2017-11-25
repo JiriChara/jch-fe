@@ -26,7 +26,11 @@
             Ooops, no projects found..
           </b-notification>
 
-          <jch-loader v-if="isLoadingProjects" />
+          <nav class="level">
+            <p class="level-item has-text-centered">
+              <jch-loader v-if="isLoadingProjects" />
+            </p>
+          </nav>
 
           <div class="tile is-ancestor" v-for="group in projectGroups" v-if="!isLoadingProjects">
             <div class="tile is-12">
