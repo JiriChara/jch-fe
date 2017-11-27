@@ -1,8 +1,5 @@
 @import './variables';
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Barrio'); 
-
 // Normalize CSS
 @import '~normalize.css';
 
@@ -25,4 +22,13 @@ $link: $theme-color-5;
   background-color: transparent;
   border-radius: 3px;
   overflow-x: auto;
+}
+
+@font-face {
+  font-family: 'Barrio';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Barrio Regular'), local('Barrio-Regular'),
+       url('./fonts/barrio-v2-latin-ext-regular.woff2') format('woff2'),
+       url('./fonts/barrio-v2-latin-ext-regular.woff') format('woff');
 }

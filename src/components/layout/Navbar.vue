@@ -152,6 +152,7 @@
       font-family: 'Barrio', cursive;
       color: $theme-color-2;
       font-weight: normal;
+      text-shadow: 4px 4px 4px #aaa;
 
       span {
         color: $theme-color-3;
