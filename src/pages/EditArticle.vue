@@ -41,9 +41,7 @@
       }),
 
       article() {
-        return this.articleBySlug(
-          this.route.params.slug,
-        );
+        return this.articleBySlug(this.route.params.slug);
       },
 
       subtitle() {

@@ -41,9 +41,7 @@
       }),
 
       project() {
-        return this.projectBySlug(
-          this.route.params.slug,
-        );
+        return this.projectBySlug(this.route.params.slug);
       },
 
       subtitle() {

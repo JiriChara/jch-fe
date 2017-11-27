@@ -148,9 +148,10 @@ const router = new Router({
 });
 
 const protectRoute = (routeRecord, to, form, next) => {
-  const perimeter = routeRecord.meta.perimeter;
-  const Governess = routeRecord.meta.governess || RouteGoverness;
-  const action = routeRecord.meta.perimeterAction || 'route';
+  const { meta } = routeRecord;
+  const { perimeter } = meta;
+  const Governess = meta.governess || RouteGoverness;
+  const action = meta.perimeterAction || 'route';
 
   if (perimeter) {
     const sandbox = createSandbox(child(store), {

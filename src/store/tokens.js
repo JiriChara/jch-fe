@@ -16,7 +16,7 @@ export default {
 
       return client.post('/api/tokens', data, config)
         .then((res) => {
-          const jwt = res.data.jwt;
+          const { jwt } = res.data;
 
           commit('setJWT', jwt);
 
