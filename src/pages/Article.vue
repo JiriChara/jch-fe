@@ -25,6 +25,12 @@
   export default {
     name: 'article',
 
+    metaInfo() {
+      return {
+        title: this.article.title,
+      };
+    },
+
     components: {
       JchArticle,
       JchArticleContent,

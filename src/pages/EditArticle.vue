@@ -20,6 +20,12 @@
   export default {
     name: 'new-article',
 
+    metaInfo() {
+      return {
+        title: `Edit ${this.article.title}`,
+      };
+    },
+
     components: {
       JchHero,
       JchArticleForm,

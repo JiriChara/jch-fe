@@ -72,6 +72,10 @@
   export default {
     name: 'articles',
 
+    metaInfo: {
+      title: 'Blog',
+    },
+
     components: {
       JchArticle,
       JchArticleFilter,

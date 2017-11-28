@@ -20,6 +20,10 @@
   export default {
     name: 'login',
 
+    metaInfo: {
+      title: 'Login',
+    },
+
     components: {
       JchHero,
       JchLoginForm,

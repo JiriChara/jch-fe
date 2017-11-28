@@ -16,6 +16,10 @@
   export default {
     name: 'not-found',
 
+    metaInfo: {
+      title: '404',
+    },
+
     components: {
       JchHero,
     },

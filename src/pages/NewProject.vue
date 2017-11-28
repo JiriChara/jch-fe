@@ -20,6 +20,10 @@
   export default {
     name: 'new-project',
 
+    metaInfo: {
+      title: 'Create New Project',
+    },
+
     components: {
       JchHero,
       JchProjectForm,

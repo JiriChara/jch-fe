@@ -30,6 +30,10 @@
   export default {
     name: 'cv',
 
+    metaInfo: {
+      title: 'Curriculum Vitae',
+    },
+
     components: {
       JchArticleContent,
       JchContent,

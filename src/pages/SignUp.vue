@@ -20,6 +20,10 @@
   export default {
     name: 'sign-up',
 
+    metaInfo: {
+      title: 'Sign Up',
+    },
+
     components: {
       JchHero,
       JchSignUpForm,

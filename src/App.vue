@@ -18,6 +18,11 @@
   export default {
     name: 'app',
 
+    metaInfo: {
+      titleTemplate: 'Jiri Chara: %s',
+      title: 'Homepage',
+    },
+
     components: {
       JchFooter,
       JchNavbar,

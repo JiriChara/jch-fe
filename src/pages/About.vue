@@ -30,6 +30,10 @@
   export default {
     name: 'about',
 
+    metaInfo: {
+      title: 'About Me',
+    },
+
     components: {
       JchArticleContent,
       JchContent,

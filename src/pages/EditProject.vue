@@ -20,6 +20,12 @@
   export default {
     name: 'edit-project',
 
+    metaInfo() {
+      return {
+        title: `Edit ${this.project.name}`,
+      };
+    },
+
     components: {
       JchProjectForm,
       JchHero,

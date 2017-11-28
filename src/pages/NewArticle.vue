@@ -20,6 +20,10 @@
   export default {
     name: 'new-article',
 
+    metaInfo: {
+      title: 'Create New Article',
+    },
+
     components: {
       JchHero,
       JchArticleForm,

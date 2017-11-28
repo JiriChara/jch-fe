@@ -62,6 +62,10 @@
   export default {
     name: 'projects',
 
+    metaInfo: {
+      title: 'Projects',
+    },
+
     components: {
       JchContent,
       JchHero,

@@ -4,6 +4,7 @@ import VueProgressBar from 'vue-progressbar';
 import { sync } from 'vuex-router-sync';
 import VueKindergarten from 'vue-kindergarten';
 import Vuelidate from 'vuelidate';
+import Meta from 'vue-meta';
 
 import App from '@/App';
 import router from '@/router';
@@ -33,6 +34,8 @@ Vue.use(VueKindergarten, {
 });
 
 Vue.use(Vuelidate);
+
+Vue.use(Meta);
 
 // Global Components
 Vue.component('jch-loader', JChLoader);
