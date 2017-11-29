@@ -22,7 +22,7 @@
 
     metaInfo() {
       return {
-        title: `Edit ${this.project.name}`,
+        title: `Edit ${this.project ? this.project.name : 'project'}`,
       };
     },
 

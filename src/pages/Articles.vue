@@ -127,6 +127,7 @@
             ...this.route.query,
             page: {
               number: nextPage ? this.currentArticlesPage + 1 : 1,
+              size: 3,
             },
           },
         };

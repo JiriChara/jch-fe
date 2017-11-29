@@ -16,12 +16,14 @@ import EditProject from '@/pages/EditProject';
 import NewProject from '@/pages/NewProject';
 import Login from '@/pages/Login';
 import SignUp from '@/pages/SignUp';
+import NewTag from '@/pages/NewTag';
 import NotFound from '@/pages/NotFound';
 import RouteGoverness from '@/governesses/RouteGoverness';
 import articlesPerimeter from '@/perimeters/articles';
 import loginPerimeter from '@/perimeters/login';
 import projectsPerimeter from '@/perimeters/projects';
 import signUpPerimeter from '@/perimeters/signUp';
+import tagsPerimeter from '@/perimeters/tags';
 
 Vue.use(Router);
 
@@ -106,6 +108,16 @@ const router = new Router({
       meta: {
         perimeter: projectsPerimeter,
         perimeterAction: 'update',
+      },
+    },
+
+    {
+      path: '/tags/new',
+      name: 'new-tag',
+      component: NewTag,
+      meta: {
+        perimeter: tagsPerimeter,
+        perimeterAction: 'create',
       },
     },
 

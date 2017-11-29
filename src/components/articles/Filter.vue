@@ -12,7 +12,7 @@
           <input
             @keyup.enter="onSearch"
             v-model="searchTerm"
-            class="input search-input"
+            class="input is-extended"
             type="text"
             placeholder="eg. Ruby">
 
@@ -34,7 +34,17 @@
       </div>
     </div>
 
-    <jch-loader v-if="!tagList.length" class="panel-block" />
+    <jch-loader v-if="!tagList.length && isLoadingTags" class="panel-block" />
+
+    <div v-if="$tags.isAllowed('create')" class="panel-block">
+      <router-link class="button" :to="{ name: 'new-tag' }">
+        <b-icon pack="fa" icon="plus"></b-icon>
+
+        <span>
+          Create Tag
+        </span>
+      </router-link>
+    </div>
 
     <a
       v-for="tag in tagList"
@@ -60,12 +70,17 @@
   import { mapState, mapGetters, mapActions } from 'vuex';
 
   import articleFilterMixin from '@/mixins/articleFilterMixin';
+  import tagsPerimeter from '@/perimeters/tags';
 
   export default {
     name: 'jch-article-filter',
 
     mixins: [
       articleFilterMixin,
+    ],
+
+    perimeters: [
+      tagsPerimeter,
     ],
 
     computed: {
@@ -76,6 +91,7 @@
 
       ...mapGetters('tags', {
         tagList: 'list',
+        isLoadingTags: 'isLoading',
       }),
 
       ...mapState([
@@ -89,9 +105,17 @@
       }),
 
       fetchData() {
+        const config = {
+          params: {
+            page: {
+              size: 100,
+            },
+          },
+        };
+
         this.$Progress.start();
 
-        return this.fetchTags()
+        return this.fetchTags({ config })
           .then(() => this.$Progress.finish())
           .catch(() => this.$Progress.fail());
       },

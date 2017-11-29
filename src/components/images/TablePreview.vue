@@ -5,6 +5,10 @@
         {{ props.row.id }}
       </b-table-column>
 
+      <b-table-column label="Name">
+        {{ props.row.name }}
+      </b-table-column>
+
       <b-table-column label="Url">
         {{ props.row.file.url }}
       </b-table-column>

@@ -5,7 +5,8 @@ export default new BasePerimeter({
 
   can: {
     route() {
-      return this.isNotLoggedIn();
+      // Disable sign-up for now
+      return false;
     },
   },
 });

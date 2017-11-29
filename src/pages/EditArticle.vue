@@ -22,7 +22,7 @@
 
     metaInfo() {
       return {
-        title: `Edit ${this.article.title}`,
+        title: `Edit ${this.article ? this.article.title : 'article'}`,
       };
     },
 

@@ -27,6 +27,14 @@
           @input="$v.content.$touch()" />
     </b-field>
 
+    <b-field label="Tags" v-if="article.createdAt">
+      <b-select v-model="tags" multiple>
+        <option v-for="tag in tagList" :key="tag.id" :value="tag.name">
+          {{ tag.name }}
+        </option>
+      </b-select>
+    </b-field>
+
     <jch-image-uploader
       v-if="article.createdAt"
       :imageable-id="article.id"
@@ -99,6 +107,7 @@
 <script>
   import moment from 'moment';
   import { required } from 'vuelidate/lib/validators';
+  import { mapActions, mapGetters } from 'vuex';
 
   import JchImageUploader from '@/components/images/Uploader';
 
@@ -117,10 +126,13 @@
     },
 
     data() {
+      const { tags } = this.article;
+
       return {
         title: this.article.title || '',
         slug: this.article.slug || '',
         content: this.article.content || '',
+        tags: tags ? tags.map(tag => tag.name) : [],
         publishedAtDate: moment(this.article.publishedAt).toDate(),
         publishedAtTime: moment(this.article.publishedAt).toDate(),
         type: this.article.type || 'Article',
@@ -129,6 +141,10 @@
     },
 
     computed: {
+      ...mapGetters('tags', {
+        tagList: 'list',
+      }),
+
       titleErrorMessages() {
         const messages = [];
 
@@ -167,6 +183,10 @@
     },
 
     methods: {
+      ...mapActions('tags', {
+        fetchTags: 'fetchList',
+      }),
+
       onSubmit() {
         this.$emit('submit', this.serialize());
       },
@@ -187,7 +207,28 @@
             millisecond: 0,
           }).toISOString() : null,
           type: this.type,
+          tagList: this.tags.join(','),
         };
+      },
+
+      fetchData() {
+        const config = {
+          params: {
+            page: {
+              size: 100,
+            },
+          },
+        };
+
+        this.$Progress.start();
+
+        return this.fetchTags({ config })
+          .then(() => {
+            this.$Progress.finish();
+          })
+          .catch(() => {
+            this.$Progress.fail();
+          });
       },
     },
 
@@ -205,6 +246,10 @@
       type: {
         required,
       },
+    },
+
+    created() {
+      this.fetchData();
     },
 
     mounted() {
