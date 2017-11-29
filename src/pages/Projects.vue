@@ -5,12 +5,12 @@
     <section class="section">
       <div class="container">
         <jch-content>
-          <nav class="level">
+          <nav class="level" v-if="$isAllowed('create')">
             <div class="level-left">
             </div>
 
             <div class="level-right">
-              <div class="level-item" v-if="$isAllowed('create')">
+              <div class="level-item">
                 <router-link class="button" :to="{ name: 'new-project' }">
                   <b-icon pack="fa" icon="plus"></b-icon>
 
@@ -26,9 +26,9 @@
             Ooops, no projects found..
           </b-notification>
 
-          <nav class="level">
+          <nav class="level" v-if="isLoadingProjects">
             <p class="level-item has-text-centered">
-              <jch-loader v-if="isLoadingProjects" />
+              <jch-loader></jch-loader>
             </p>
           </nav>
 
