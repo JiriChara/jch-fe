@@ -52,6 +52,7 @@
           </nav>
 
           <p slot="side">
+            <jch-sidebar-about-me-small></jch-sidebar-about-me-small>
             <jch-article-filter></jch-article-filter>
           </p>
         </jch-content>
@@ -67,6 +68,7 @@
   import JchArticleFilter from '@/components/articles/Filter';
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
+  import JchSidebarAboutMeSmall from '@/components/sidebar/AboutMeSmall';
   import articlesPerimeter from '@/perimeters/articles';
 
   export default {
@@ -81,6 +83,7 @@
       JchArticleFilter,
       JchContent,
       JchHero,
+      JchSidebarAboutMeSmall,
     },
 
     perimeters: [

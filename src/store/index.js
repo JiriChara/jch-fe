@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import aboutMe from '@/store/aboutMe';
 import articles from '@/store/articles';
 import images from '@/store/images';
 import me from '@/store/me';
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   state: {},
 
   modules: {
+    aboutMe,
     articles,
     images,
     me,

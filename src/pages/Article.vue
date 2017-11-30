@@ -27,7 +27,7 @@
 
     metaInfo() {
       return {
-        title: this.article.title,
+        title: this.article ? this.article.title : null,
       };
     },
 

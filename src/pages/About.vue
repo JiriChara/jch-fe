@@ -10,9 +10,9 @@
           Ooops, can't find anything about me. :-(
         </b-notification>
 
-        <nav class="level">
+        <nav class="level" v-if="isLoadingArticles">
           <p class="level-item has-text-centered">
-            <jch-loader v-if="isLoadingArticles" />
+            <jch-loader></jch-loader>
           </p>
         </nav>
       </div>

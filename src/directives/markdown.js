@@ -1,20 +1,32 @@
-import marked from 'marked';
+import MarkdownIt from 'markdown-it';
+import emoji from 'markdown-it-emoji';
+import twemoji from 'twemoji';
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 import ruby from 'highlight.js/lib/languages/ruby';
+import vim from 'highlight.js/lib/languages/vim';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('ruby', ruby);
+hljs.registerLanguage('vim', vim);
 
-marked.setOptions({
+const md = new MarkdownIt({
   highlight(code) {
     return hljs.highlightAuto(code).value;
   },
+
   langPrefix: 'hljs ',
 });
 
+md.use(emoji);
+
+md.renderer.rules.emoji = (token, idx) => twemoji.parse(
+  token[idx].content,
+  icon => `/static/img/emoji/${icon}.svg`,
+);
+
 export default {
   bind(el, { value }) {
-    el.innerHTML = marked(value);
+    el.innerHTML = md.render(value);
   },
 };

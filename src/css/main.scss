@@ -32,3 +32,10 @@ $link: $theme-color-5;
        url('./fonts/barrio-v2-latin-ext-regular.woff2') format('woff2'),
        url('./fonts/barrio-v2-latin-ext-regular.woff') format('woff');
 }
+
+img.emoji {
+   height: 1em;
+   width: 1em;
+   margin: 0 .05em 0 .1em;
+   vertical-align: -0.1em;
+}
