@@ -7,7 +7,7 @@
         </p>
         <p>
           The source code of this website is
-          <a href="https://github.com/JiriChara/chara.vip">
+          <a href="https://github.com/JiriChara/jch-fe">
             available on GitHub
           </a>
           and is licensed
