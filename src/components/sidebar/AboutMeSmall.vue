@@ -7,6 +7,23 @@
         </p>
       </nav>
 
+      <nav class="level" v-if="$isAllowed('update') && aboutMeSmall">
+        <div class="level-left">
+        </div>
+
+        <div class="level-right">
+          <div class="level-item">
+            <router-link :to="{ name: 'edit-article', params: { slug: aboutMeSmall.slug } }">
+              <b-icon icon="pencil" size="is-small"></b-icon>
+
+              <span>
+                Edit
+              </span>
+            </router-link>
+          </div>
+        </div>
+      </nav>
+
       <div class="content" v-if="aboutMeSmall && !isLoadingAboutMe">
         <h4>{{ aboutMeSmall.title }}</h4>
         <jch-article-content :article="aboutMeSmall"></jch-article-content>
@@ -19,6 +36,7 @@
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   import JchArticleContent from '@/components/articles/Content';
+  import articlesPerimeter from '@/perimeters/articles';
 
   export default {
     name: 'jch-sidebar-about-me-small',
@@ -26,6 +44,10 @@
     components: {
       JchArticleContent,
     },
+
+    perimeters: [
+      articlesPerimeter,
+    ],
 
     computed: {
       ...mapGetters('aboutMe', {

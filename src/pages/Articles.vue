@@ -11,9 +11,8 @@
 
             <div class="level-right">
               <div class="level-item">
-                <router-link class="button" :to="{ name: 'new-article' }">
-                  <b-icon pack="fa" icon="plus"></b-icon>
-
+                <router-link :to="{ name: 'new-article' }">
+                  <b-icon icon="plus" size="is-small"></b-icon>
                   <span>
                     Create Article
                   </span>

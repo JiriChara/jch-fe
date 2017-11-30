@@ -11,8 +11,8 @@
 
             <div class="level-right">
               <div class="level-item">
-                <router-link class="button" :to="{ name: 'new-project' }">
-                  <b-icon pack="fa" icon="plus"></b-icon>
+                <router-link :to="{ name: 'new-project' }">
+                  <b-icon icon="plus" size="is-small"></b-icon>
 
                   <span>
                     Create Project
@@ -43,7 +43,7 @@
           </div>
 
           <p slot="side">
-            Custom content
+            <jch-sidebar-about-me-small></jch-sidebar-about-me-small>
           </p>
         </jch-content>
       </div>
@@ -57,6 +57,7 @@
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
   import JchProjectCard from '@/components/projects/Card';
+  import JchSidebarAboutMeSmall from '@/components/sidebar/AboutMeSmall';
   import projectsPerimeter from '@/perimeters/projects';
 
   export default {
@@ -70,6 +71,7 @@
       JchContent,
       JchHero,
       JchProjectCard,
+      JchSidebarAboutMeSmall,
     },
 
     perimeters: [
