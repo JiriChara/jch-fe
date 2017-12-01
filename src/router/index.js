@@ -17,13 +17,13 @@ const About = () => import('@/pages/About');
 const Admin = () => import('@/pages/Admin');
 const AdminDashboard = () => import('@/pages/admin/Dashboard');
 const AdminNewArticle = () => import('@/pages/admin/NewArticle');
+const AdminArticleTable = () => import('@/pages/admin/ArticleTable');
+const AdminNewProject = () => import('@/pages/admin/NewProject');
+const AdminProjectTable = () => import('@/pages/admin/ProjectTable');
 const Article = () => import('@/pages/Article');
 const Articles = () => import('@/pages/Articles');
-const ArticleTable = () => import('@/pages/ArticleTable');
 const CV = () => import('@/pages/CV');
 const Projects = () => import('@/pages/Projects');
-const EditProject = () => import('@/pages/EditProject');
-const NewProject = () => import('@/pages/NewProject');
 const Login = () => import('@/pages/Login');
 const SignUp = () => import('@/pages/SignUp');
 const NewTag = () => import('@/pages/NewTag');
@@ -76,26 +76,6 @@ const router = new Router({
     },
 
     {
-      path: '/projects/new',
-      name: 'new-project',
-      component: NewProject,
-      meta: {
-        perimeter: projectsPerimeter,
-        perimeterAction: 'create',
-      },
-    },
-
-    {
-      path: '/projects/:slug/edit',
-      name: 'edit-project',
-      component: EditProject,
-      meta: {
-        perimeter: projectsPerimeter,
-        perimeterAction: 'update',
-      },
-    },
-
-    {
       path: '/tags/new',
       name: 'new-tag',
       component: NewTag,
@@ -139,8 +119,20 @@ const router = new Router({
 
         {
           path: 'articles',
-          name: 'admin-article-list',
-          component: ArticleTable,
+          name: 'admin-article-table',
+          component: AdminArticleTable,
+        },
+
+        {
+          path: 'projects/new',
+          name: 'admin-new-project',
+          component: AdminNewProject,
+        },
+
+        {
+          path: 'projects',
+          name: 'admin-project-table',
+          component: AdminProjectTable,
         },
       ],
     },

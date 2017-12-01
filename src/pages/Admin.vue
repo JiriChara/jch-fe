@@ -7,7 +7,7 @@
         <div class="columns">
           <div class="column is-3">
             <aside class="menu">
-              <div v-for="group in sidebar">
+              <template v-for="group in sidebar">
                 <p class="menu-label">
                   {{ group.title }}
                 </p>
@@ -20,7 +20,7 @@
                     </router-link>
                   </li>
                 </ul>
-              </div>
+              </template>
             </aside>
           </div>
 
@@ -78,8 +78,27 @@
               {
                 title: 'List',
                 icon: 'table',
-                path: { name: 'admin-article-list' },
-                isSelected: this.route.name === 'admin-article-list',
+                path: { name: 'admin-article-table' },
+                isSelected: this.route.name === 'admin-article-table',
+              },
+            ],
+          },
+
+          {
+            title: 'Projects',
+            items: [
+              {
+                title: 'Add',
+                icon: 'plus',
+                path: { name: 'admin-new-project' },
+                isSelected: this.route.name === 'admin-new-project',
+              },
+
+              {
+                title: 'List',
+                icon: 'table',
+                path: { name: 'admin-project-table' },
+                isSelected: this.route.name === 'admin-project-table',
               },
             ],
           },

@@ -5,23 +5,6 @@
     <section class="section">
       <div class="container">
         <jch-content>
-          <nav class="level" v-if="$isAllowed('create')">
-            <div class="level-left">
-            </div>
-
-            <div class="level-right">
-              <div class="level-item">
-                <router-link :to="{ name: 'new-project' }">
-                  <b-icon icon="plus" size="is-small"></b-icon>
-
-                  <span>
-                    Create Project
-                  </span>
-                </router-link>
-              </div>
-            </div>
-          </nav>
-
           <b-notification v-if="!isLoadingProjects && !projectGroups.length" type="is-info" has-icon :closable="false">
             Ooops, no projects found..
           </b-notification>
@@ -58,7 +41,6 @@
   import JchHero from '@/components/layout/Hero';
   import JchProjectCard from '@/components/projects/Card';
   import JchSidebarAboutMeSmall from '@/components/sidebar/AboutMeSmall';
-  import projectsPerimeter from '@/perimeters/projects';
 
   export default {
     name: 'projects',
@@ -73,10 +55,6 @@
       JchProjectCard,
       JchSidebarAboutMeSmall,
     },
-
-    perimeters: [
-      projectsPerimeter,
-    ],
 
     data() {
       return {

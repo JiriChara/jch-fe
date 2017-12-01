@@ -1,13 +1,6 @@
 <template>
-  <div>
-    <jch-hero :title="title"></jch-hero>
-
-    <section class="section">
-      <div class="container">
-        <jch-project-form @submit="onSubmit" @reset="onReset" />
-      </div>
-    </section>
-  </div>
+  <jch-project-form @submit="onSubmit" @reset="onReset">
+  </jch-project-form>
 </template>
 
 <script>
@@ -18,7 +11,7 @@
   import JchProjectForm from '@/components/projects/Form';
 
   export default {
-    name: 'new-project',
+    name: 'admin-new-project',
 
     metaInfo: {
       title: 'Create New Project',

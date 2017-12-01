@@ -9,7 +9,7 @@
   import JchArticleForm from '@/components/articles/Form';
 
   export default {
-    name: 'new-article',
+    name: 'admin-new-article',
 
     metaInfo: {
       title: 'Create New Article',
@@ -17,12 +17,6 @@
 
     components: {
       JchArticleForm,
-    },
-
-    data() {
-      return {
-        title: 'Create New Article',
-      };
     },
 
     methods: {

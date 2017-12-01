@@ -12,8 +12,6 @@
 
     <template slot="detail" slot-scope="props">
       <article class="content">
-        <h1>{{ props.row.title }}</h1>
-
         <jch-article-form
           :article="props.row"
           @submit="onSubmit"
@@ -43,7 +41,7 @@
   import JchArticleForm from '@/components/articles/Form';
 
   export default {
-    name: 'article-table',
+    name: 'admin-article-table',
 
     components: {
       JchArticleForm,
@@ -100,8 +98,6 @@
 
         return this.updateArticle({ id: article.slug, data: { article } })
           .then(() => {
-            router.push({ name: 'admin-article-list' });
-
             this.$snackbar.open({
               message: 'Article was succcessfully updated.',
               type: 'is-success',
@@ -120,7 +116,7 @@
       },
 
       onReset() {
-        router.push({ name: 'admin-article-list' });
+        router.push({ name: 'admin-dashboard' });
       },
     },
 
