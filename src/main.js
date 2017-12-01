@@ -41,10 +41,15 @@ Vue.use(Meta);
 // Global Components
 Vue.component('jch-loader', JChLoader);
 
-Vue.use(VueAnalytics, {
-  id: 'UA-110513204-1',
-  router,
-});
+if (process.env === 'production') {
+  Vue.use(VueAnalytics, {
+    id: 'UA-110513204-1',
+    router,
+    debug: {
+      enabled: false,
+    },
+  });
+}
 
 const app = new Vue({
   template: '<App/>',

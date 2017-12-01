@@ -5,22 +5,6 @@
     <section class="section">
       <div class="container">
         <jch-content>
-          <nav class="level" v-if="$isAllowed('create')">
-            <div class="level-left">
-            </div>
-
-            <div class="level-right">
-              <div class="level-item">
-                <router-link :to="{ name: 'new-article' }">
-                  <b-icon icon="plus" size="is-small"></b-icon>
-                  <span>
-                    Create Article
-                  </span>
-                </router-link>
-              </div>
-            </div>
-          </nav>
-
           <div v-if="!isLoadingArticles || isLoadingNextArticlePage">
             <jch-article
               v-for="article in articleList"
@@ -68,7 +52,6 @@
   import JchContent from '@/components/layout/Content';
   import JchHero from '@/components/layout/Hero';
   import JchSidebarAboutMeSmall from '@/components/sidebar/AboutMeSmall';
-  import articlesPerimeter from '@/perimeters/articles';
 
   export default {
     name: 'articles',
@@ -84,10 +67,6 @@
       JchHero,
       JchSidebarAboutMeSmall,
     },
-
-    perimeters: [
-      articlesPerimeter,
-    ],
 
     data() {
       return {

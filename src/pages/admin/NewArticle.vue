@@ -1,20 +1,11 @@
 <template>
-  <div>
-    <jch-hero :title="title"></jch-hero>
-
-    <section class="section">
-      <div class="container">
-        <jch-article-form @submit="onSubmit" @reset="onReset" />
-      </div>
-    </section>
-  </div>
+  <jch-article-form @submit="onSubmit" @reset="onReset"></jch-article-form>
 </template>
 
 <script>
   import { mapActions } from 'vuex';
 
   import router from '@/router';
-  import JchHero from '@/components/layout/Hero';
   import JchArticleForm from '@/components/articles/Form';
 
   export default {
@@ -25,7 +16,6 @@
     },
 
     components: {
-      JchHero,
       JchArticleForm,
     },
 

@@ -110,6 +110,12 @@
             to: { name: 'cv' },
             isSelected: this.route.name === 'cv',
           },
+
+          {
+            title: 'Admin',
+            to: { name: 'admin-dashboard' },
+            isSelected: /^admin.*$/.test(this.route.name),
+          },
         ];
       },
     },

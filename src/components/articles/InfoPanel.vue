@@ -24,13 +24,6 @@
       </span>
       <span>{{ articlePublishedAt }}</span>
     </div>
-
-    <span class="level-item level-left" v-if="$articles.isAllowed('update')">
-      <span class="panel-icon is-small">
-        <i class="fa fa-pencil"></i>
-      </span>
-      <router-link :to="{ name: 'edit-article', params: { slug: article.slug } }">Edit Article</router-link>
-    </span>
   </nav>
 </template>
 
@@ -39,17 +32,12 @@
   import { mapState } from 'vuex';
 
   import articleFilterMixin from '@/mixins/articleFilterMixin';
-  import articlesPerimeter from '@/perimeters/articles';
 
   export default {
     name: 'jch-article-info-panel',
 
     mixins: [
       articleFilterMixin,
-    ],
-
-    perimeters: [
-      articlesPerimeter,
     ],
 
     props: {

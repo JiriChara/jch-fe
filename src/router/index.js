@@ -11,12 +11,15 @@ import loginPerimeter from '@/perimeters/login';
 import projectsPerimeter from '@/perimeters/projects';
 import signUpPerimeter from '@/perimeters/signUp';
 import tagsPerimeter from '@/perimeters/tags';
+import adminPerimeter from '@/perimeters/admin';
 
 const About = () => import('@/pages/About');
+const Admin = () => import('@/pages/Admin');
+const AdminDashboard = () => import('@/pages/admin/Dashboard');
+const AdminNewArticle = () => import('@/pages/admin/NewArticle');
 const Article = () => import('@/pages/Article');
 const Articles = () => import('@/pages/Articles');
-const NewArticle = () => import('@/pages/NewArticle');
-const EditArticle = () => import('@/pages/EditArticle');
+const ArticleTable = () => import('@/pages/ArticleTable');
 const CV = () => import('@/pages/CV');
 const Projects = () => import('@/pages/Projects');
 const EditProject = () => import('@/pages/EditProject');
@@ -53,32 +56,12 @@ const router = new Router({
     },
 
     {
-      path: '/articles/new',
-      name: 'new-article',
-      component: NewArticle,
-      meta: {
-        perimeter: articlesPerimeter,
-        perimeterAction: 'create',
-      },
-    },
-
-    {
       path: '/articles/:slug',
       name: 'article',
       component: Article,
       meta: {
         perimeter: articlesPerimeter,
         perimeterAction: 'viewSingle',
-      },
-    },
-
-    {
-      path: '/articles/:slug/edit',
-      name: 'edit-article',
-      component: EditArticle,
-      meta: {
-        perimeter: articlesPerimeter,
-        perimeterAction: 'update',
       },
     },
 
@@ -132,6 +115,34 @@ const router = new Router({
       path: '/cv',
       name: 'cv',
       component: CV,
+    },
+
+    {
+      path: '/admin',
+      component: Admin,
+      meta: {
+        perimeter: adminPerimeter,
+      },
+
+      children: [
+        {
+          path: '',
+          name: 'admin-dashboard',
+          component: AdminDashboard,
+        },
+
+        {
+          path: 'articles/new',
+          name: 'admin-new-article',
+          component: AdminNewArticle,
+        },
+
+        {
+          path: 'articles',
+          name: 'admin-article-list',
+          component: ArticleTable,
+        },
+      ],
     },
 
     {
