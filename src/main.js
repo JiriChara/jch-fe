@@ -5,6 +5,7 @@ import { sync } from 'vuex-router-sync';
 import VueKindergarten from 'vue-kindergarten';
 import Vuelidate from 'vuelidate';
 import Meta from 'vue-meta';
+import VueAnalytics from 'vue-analytics';
 
 import App from '@/App';
 import router from '@/router';
@@ -39,6 +40,11 @@ Vue.use(Meta);
 
 // Global Components
 Vue.component('jch-loader', JChLoader);
+
+Vue.use(VueAnalytics, {
+  id: 'UA-110513204-1',
+  router,
+});
 
 const app = new Vue({
   template: '<App/>',
