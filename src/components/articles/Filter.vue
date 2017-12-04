@@ -12,7 +12,7 @@
           <input
             @keyup.enter="onSearch"
             v-model="searchTerm"
-            class="input is-extended"
+            class="input"
             type="text"
             placeholder="eg. Ruby">
 
@@ -25,11 +25,12 @@
         </p>
 
         <p class="control">
-          <a class="button is-info"
-            @click="onSearch"
+          <button class="button is-info"
+            @click.prevent="onSearch"
             :disabled="searchTerm === ''">
-            <i class="fa fa-search"></i>
-          </a>
+            <b-icon icon="search"></b-icon>
+            <span>Search</span>
+          </button>
         </p>
       </div>
     </div>

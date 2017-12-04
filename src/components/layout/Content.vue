@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
 
-    <div class="column">
+    <div class="column is-hidden-mobile">
       <slot name="side">
       </slot>
     </div>

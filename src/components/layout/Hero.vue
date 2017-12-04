@@ -11,14 +11,46 @@
         </h2>
 
         <slot />
+
+        <div class="field has-addons is-hidden-tablet" v-if="showSearch">
+          <p class="control is-expanded has-icon has-icon-right">
+            <input class="input"
+              v-model="searchTerm"
+              type="text"
+              placeholder="eg. Ruby"
+              @keyup.enter="onSearch" />
+
+            <span
+              class="icon is-small is-right is-clickable"
+              v-if="searchTerm !== ''"
+              @click="onSearchClear" >
+              <i class="fa fa-times"></i>
+            </span>
+          </p>
+
+          <p class="control">
+            <button class="button is-info"
+              @click.prevent="onSearch"
+              :disabled="searchTerm === ''">
+              <b-icon icon="search"></b-icon>
+              <span>Search</span>
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+  import articleFilterMixin from '@/mixins/articleFilterMixin';
+
   export default {
     name: 'jch-hero',
+
+    mixins: [
+      articleFilterMixin,
+    ],
 
     props: {
       title: {
@@ -30,13 +62,17 @@
         type: String,
         required: false,
       },
+
+      showSearch: {
+        type: Boolean,
+        default: false,
+      },
     },
   };
 </script>
 
 <style lang="scss" scoped>
   @import '../../css/variables';
-  @import '~bulma';
 
   .hero {
     background-color: $theme-color-2;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <jch-hero :title="title" :subtitle="subtitle"></jch-hero>
+    <jch-hero :title="title" :subtitle="subtitle" :show-search="true"></jch-hero>
 
     <section class="section">
       <div class="container">

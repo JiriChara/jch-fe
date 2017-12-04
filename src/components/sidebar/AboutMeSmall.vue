@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters, mapState } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   import JchArticleContent from '@/components/articles/Content';
 
@@ -32,10 +32,6 @@
         aboutMeList: 'list',
         isLoadingAboutMe: 'isLoading',
       }),
-
-      ...mapState([
-        'route',
-      ]),
 
       aboutMeSmall() {
         return this.aboutMeList.filter(article => article.type === 'AboutSmall')[0];
@@ -65,10 +61,6 @@
           .then(() => this.$Progress.finish())
           .catch(() => this.$Progress.fail());
       },
-    },
-
-    watch: {
-      $route: 'fetchData',
     },
 
     created() {
