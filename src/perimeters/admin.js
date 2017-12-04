@@ -2,7 +2,7 @@
 import BasePerimeter from '@/perimeters/BasePerimeter';
 
 export default new BasePerimeter({
-  purpose: 'signUp',
+  purpose: 'admin',
 
   can: {
     route() {

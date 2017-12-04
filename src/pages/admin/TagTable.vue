@@ -1,22 +1,22 @@
 <template>
-  <b-table :data="articleList" detailed detail-key="id">
+  <b-table :data="tagList" detailed>
     <template slot-scope="props">
       <b-table-column label="ID" numeric>
         {{ props.row.id }}
       </b-table-column>
 
-      <b-table-column label="Title">
-        {{ props.row.title }}
+      <b-table-column label="Name">
+        {{ props.row.name }}
       </b-table-column>
     </template>
 
     <template slot="detail" slot-scope="props">
       <article class="content">
-        <jch-article-form
-          :article="props.row"
+        <jch-tag-form
+          :tag="props.row"
           @submit="onSubmit"
           @reset="onReset">
-        </jch-article-form>
+        </jch-tag-form>
       </article>
     </template>
 
@@ -38,21 +38,19 @@
   import { mapActions, mapGetters, mapState } from 'vuex';
 
   import router from '@/router';
-  import JchArticleForm from '@/components/articles/Form';
+  import JchTagForm from '@/components/tags/Form';
 
   export default {
-    name: 'admin-article-table',
+    name: 'admin-tag-table',
 
     components: {
-      JchArticleForm,
+      JchTagForm,
     },
 
     computed: {
-      ...mapGetters('articles', {
-        articleList: 'list',
-        isLoadingArticles: 'isLoading',
-        hasNextArticlesPage: 'hasNextPage',
-        currentArticlesPage: 'currentPage',
+      ...mapGetters('tags', {
+        tagList: 'list',
+        isLoadingTags: 'isLoading',
       }),
 
       ...mapState([
@@ -61,45 +59,36 @@
     },
 
     methods: {
-      ...mapActions('articles', {
-        fetchArticles: 'fetchList',
-        updateArticle: 'update',
+      ...mapActions('tags', {
+        fetchTags: 'fetchList',
+        updateTag: 'update',
       }),
 
-      fetchData({ nextPage = false } = {}) {
-        this.isLoadingNextArticlePage = nextPage;
-
+      fetchData() {
         const config = {
           params: {
             page: {
-              number: nextPage ? this.currentArticlesPage + 1 : 1,
-              size: 25,
+              size: 999,
             },
           },
         };
 
-        return this.fetchArticles({ config })
+        return this.fetchTags({ config })
           .then(() => {
-            this.isLoadingNextArticlePage = false;
             this.$Progress.finish();
           })
           .catch(() => {
-            this.isLoadingNextArticlePage = false;
             this.$Progress.fail();
           });
       },
 
-      onFetchNextPage() {
-        this.fetchData({ nextPage: true });
-      },
-
-      onSubmit(article) {
+      onSubmit(tag) {
         this.$Progress.start();
 
-        return this.updateArticle({ id: article.slug, data: { article } })
+        return this.updateTag({ id: tag.slug, data: { tag } })
           .then(() => {
             this.$snackbar.open({
-              message: 'Article was succcessfully updated.',
+              message: 'Tag was succcessfully updated.',
               type: 'is-success',
             });
 
@@ -107,7 +96,7 @@
           })
           .catch(() => {
             this.$snackbar.open({
-              message: 'Cannot update a article.',
+              message: 'Cannot update a tag.',
               type: 'is-danger',
             });
 

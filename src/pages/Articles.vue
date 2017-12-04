@@ -8,7 +8,7 @@
           <div v-if="!isLoadingArticles || isLoadingNextArticlePage">
             <jch-article
               v-for="article in articleList"
-              key="article.id"
+              :key="article.id"
               :article="article">
             </jch-article>
 

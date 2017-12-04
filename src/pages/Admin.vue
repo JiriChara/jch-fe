@@ -13,7 +13,7 @@
                 </p>
 
                 <ul class="menu-list">
-                  <li v-for="item in group.items">
+                  <li v-for="item in group.items" :key="item.title">
                     <router-link :to="item.path" :class="{ 'is-active': item.isSelected }">
                       <b-icon :icon="item.icon" size="is-small"></b-icon>
                       <span>{{ item.title }}</span>
@@ -99,6 +99,25 @@
                 icon: 'table',
                 path: { name: 'admin-project-table' },
                 isSelected: this.route.name === 'admin-project-table',
+              },
+            ],
+          },
+
+          {
+            title: 'Tags',
+            items: [
+              {
+                title: 'Add',
+                icon: 'plus',
+                path: { name: 'admin-new-tag' },
+                isSelected: this.route.name === 'admin-new-tag',
+              },
+
+              {
+                title: 'List',
+                icon: 'table',
+                path: { name: 'admin-tag-table' },
+                isSelected: this.route.name === 'admin-tag-table',
               },
             ],
           },

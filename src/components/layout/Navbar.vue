@@ -23,7 +23,8 @@
             :to="item.to"
             :key="item.title"
             class="navbar-item"
-            :class="{ 'is-active': item.isSelected }">
+            :class="{ 'is-active': item.isSelected }"
+            v-if="item.isVisible">
             <span>{{ item.title }}</span>
           </router-link>
         </div>
@@ -67,6 +68,7 @@
   import { mapState, mapMutations, mapActions } from 'vuex';
 
   import router from '@/router';
+  import adminPerimeter from '@/perimeters/admin';
   import logoutPerimeter from '@/perimeters/logout';
 
   export default {
@@ -74,6 +76,7 @@
 
     perimeters: [
       logoutPerimeter,
+      adminPerimeter,
     ],
 
     computed: {
@@ -91,30 +94,35 @@
             title: 'Blog',
             to: { name: 'articles' },
             isSelected: this.route.name === 'articles',
+            isVisible: true,
           },
 
           {
             title: 'Projects',
             to: { name: 'projects' },
             isSelected: this.route.name === 'projects',
+            isVisible: true,
           },
 
           {
             title: 'About Me',
             to: { name: 'about' },
             isSelected: this.route.name === 'about',
+            isVisible: true,
           },
 
           {
             title: 'Curriculum Vitae',
             to: { name: 'cv' },
             isSelected: this.route.name === 'cv',
+            isVisible: true,
           },
 
           {
             title: 'Admin',
             to: { name: 'admin-dashboard' },
             isSelected: /^admin.*$/.test(this.route.name),
+            isVisible: this.$admin.isAllowed('route'),
           },
         ];
       },

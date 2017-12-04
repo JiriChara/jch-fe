@@ -1,38 +1,23 @@
 <template>
-  <div>
-    <jch-hero :title="title"></jch-hero>
-
-    <section class="section">
-      <div class="container">
-        <jch-tag-form @submit="onSubmit" @reset="onReset" />
-      </div>
-    </section>
-  </div>
+  <jch-tag-form @submit="onSubmit" @reset="onReset">
+  </jch-tag-form>
 </template>
 
 <script>
   import { mapActions } from 'vuex';
 
   import router from '@/router';
-  import JchHero from '@/components/layout/Hero';
   import JchTagForm from '@/components/tags/Form';
 
   export default {
-    name: 'new-tag',
+    name: 'admin-new-tag',
 
     metaInfo: {
       title: 'Create New Tag',
     },
 
     components: {
-      JchHero,
       JchTagForm,
-    },
-
-    data() {
-      return {
-        title: 'Create New Tag',
-      };
     },
 
     methods: {
@@ -45,8 +30,6 @@
 
         return this.createTag({ data: { tag } })
           .then(() => {
-            router.push({ name: 'articles' });
-
             this.$snackbar.open({
               message: 'Tag was succcessfully created.',
               type: 'is-success',
@@ -65,7 +48,7 @@
       },
 
       onReset() {
-        router.push({ name: 'articles' });
+        router.push({ name: 'admin-dashboard' });
       },
     },
   };

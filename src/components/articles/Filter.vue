@@ -36,18 +36,9 @@
 
     <jch-loader v-if="!tagList.length && isLoadingTags" class="panel-block" />
 
-    <div v-if="$tags.isAllowed('create')" class="panel-block">
-      <router-link class="button" :to="{ name: 'new-tag' }">
-        <b-icon pack="fa" icon="plus"></b-icon>
-
-        <span>
-          Create Tag
-        </span>
-      </router-link>
-    </div>
-
     <a
       v-for="tag in tagList"
+      :key="tag.id"
       @click="onSelectTag(tag.name)"
       :class="{ 'is-active': isTagSelected(tag.name) }"
       class="panel-block">
@@ -70,17 +61,12 @@
   import { mapState, mapGetters, mapActions } from 'vuex';
 
   import articleFilterMixin from '@/mixins/articleFilterMixin';
-  import tagsPerimeter from '@/perimeters/tags';
 
   export default {
     name: 'jch-article-filter',
 
     mixins: [
       articleFilterMixin,
-    ],
-
-    perimeters: [
-      tagsPerimeter,
     ],
 
     computed: {

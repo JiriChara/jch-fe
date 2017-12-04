@@ -10,7 +10,6 @@ import articlesPerimeter from '@/perimeters/articles';
 import loginPerimeter from '@/perimeters/login';
 import projectsPerimeter from '@/perimeters/projects';
 import signUpPerimeter from '@/perimeters/signUp';
-import tagsPerimeter from '@/perimeters/tags';
 import adminPerimeter from '@/perimeters/admin';
 
 const About = () => import('@/pages/About');
@@ -20,13 +19,14 @@ const AdminNewArticle = () => import('@/pages/admin/NewArticle');
 const AdminArticleTable = () => import('@/pages/admin/ArticleTable');
 const AdminNewProject = () => import('@/pages/admin/NewProject');
 const AdminProjectTable = () => import('@/pages/admin/ProjectTable');
+const AdminNewTag = () => import('@/pages/admin/NewTag');
+const AdminTagTable = () => import('@/pages/admin/TagTable');
 const Article = () => import('@/pages/Article');
 const Articles = () => import('@/pages/Articles');
 const CV = () => import('@/pages/CV');
 const Projects = () => import('@/pages/Projects');
 const Login = () => import('@/pages/Login');
 const SignUp = () => import('@/pages/SignUp');
-const NewTag = () => import('@/pages/NewTag');
 const NotFound = () => import('@/pages/NotFound');
 
 Vue.use(Router);
@@ -72,16 +72,6 @@ const router = new Router({
       meta: {
         perimeter: projectsPerimeter,
         perimeterAction: 'viewList',
-      },
-    },
-
-    {
-      path: '/tags/new',
-      name: 'new-tag',
-      component: NewTag,
-      meta: {
-        perimeter: tagsPerimeter,
-        perimeterAction: 'create',
       },
     },
 
@@ -133,6 +123,18 @@ const router = new Router({
           path: 'projects',
           name: 'admin-project-table',
           component: AdminProjectTable,
+        },
+
+        {
+          path: '/tags/new',
+          name: 'admin-new-tag',
+          component: AdminNewTag,
+        },
+
+        {
+          path: 'tags',
+          name: 'admin-tag-table',
+          component: AdminTagTable,
         },
       ],
     },

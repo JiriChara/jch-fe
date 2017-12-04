@@ -7,8 +7,15 @@
         ref="name"
         v-model="name"
         @input="$v.name.$touch()"
-        placeholder="Name of tag"
+        placeholder="Choose a name for your tag"
         autofocus />
+    </b-field>
+
+    <b-field label="Slug">
+      <b-input
+        v-model="slug"
+        @input="$v.slug.$touch()"
+        placeholder="Choose a slug for your tag" />
     </b-field>
 
     <b-field grouped>
