@@ -41,6 +41,41 @@
           @input="$v.description.$touch()" />
     </b-field>
 
+    <b-field label="Publish?">
+      <b-switch v-model="isPublished"></b-switch>
+    </b-field>
+
+    <b-field label="Published At Date">
+      <b-datepicker
+        inline
+        :disabled="!isPublished"
+        v-model="publishedAtDate"
+        placeholder="Click to select...">
+
+        <button class="button is-primary"
+          @click.prevent="publishedAtDate = new Date()">
+          <b-icon icon="calendar"></b-icon>
+          <span>Today</span>
+        </button>
+      </b-datepicker>
+    </b-field>
+
+    <b-field label="Published At Time">
+      <b-timepicker
+        inline
+        :disabled="!isPublished"
+        v-model="publishedAtTime"
+        placeholder="Click to select..."
+        hour-format="24">
+
+        <button class="button is-primary"
+          @click.prevent="publishedAtTime = new Date()">
+          <b-icon icon="clock-o"></b-icon>
+          <span>Now</span>
+        </button>
+      </b-timepicker>
+    </b-field>
+
     <b-field grouped>
       <p class="control">
         <button
@@ -59,6 +94,7 @@
 </template>
 
 <script>
+  import moment from 'moment';
   import { required } from 'vuelidate/lib/validators';
 
   import ImageUpload from '@/components/utils/ImageUpload';
@@ -84,6 +120,9 @@
         url: this.project.url || '',
         description: this.project.description || '',
         image: this.project.image || '',
+        publishedAtDate: moment(this.project.publishedAt).toDate(),
+        publishedAtTime: moment(this.project.publishedAt).toDate(),
+        isPublished: !!this.project.publishedAt || false,
       };
     },
 
@@ -145,6 +184,12 @@
           url: this.url,
           description: this.description,
           image: this.image,
+          publishedAt: this.isPublished ? moment(this.publishedAtDate).set({
+            hour: moment(this.publishedAtTime).get('hour'),
+            minute: moment(this.publishedAtTime).get('minute'),
+            second: 0,
+            millisecond: 0,
+          }).toISOString() : null,
         };
       },
     },

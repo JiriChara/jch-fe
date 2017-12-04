@@ -87,9 +87,13 @@
         const config = {
           params: {
             sort: {
-              column: 'created_at',
+              column: 'published_at',
               direction: 'desc',
             },
+            page: {
+              size: 999,
+            },
+            published: true,
           },
         };
 
