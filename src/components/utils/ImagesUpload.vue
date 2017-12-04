@@ -43,11 +43,6 @@
     name: 'jch-images-upload',
 
     props: {
-      files: {
-        type: Array,
-        required: true,
-      },
-
       showUploadButton: {
         type: Boolean,
         default: false,
@@ -57,6 +52,7 @@
     data() {
       return {
         previews: {},
+        files: [],
       };
     },
 
@@ -93,6 +89,8 @@
 
       onUploadImages() {
         this.$emit('upload', Object.keys(this.previews).map(key => this.previews[key]));
+        this.previews = {};
+        this.files = [];
       },
     },
   };

@@ -2,7 +2,6 @@
   <div>
     <b-field class="uploader">
       <jch-images-upload
-        :files="imagesForUpload"
         @upload="onUploadImages"
         :show-upload-button="true">
       </jch-images-upload>
@@ -40,12 +39,6 @@
     components: {
       JchImagesUpload,
       JchImageTablePreview,
-    },
-
-    data() {
-      return {
-        imagesForUpload: [],
-      };
     },
 
     computed: {
@@ -94,8 +87,6 @@
 
           this.$Progress.fail();
         }
-
-        this.imagesForUpload = [];
 
         this.fetchData();
       },
