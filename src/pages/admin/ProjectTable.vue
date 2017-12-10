@@ -8,6 +8,10 @@
       <b-table-column label="Name">
         {{ props.row.name }}
       </b-table-column>
+
+      <b-table-column label="Published?">
+        {{ isProjectPublished(props.row) }}
+      </b-table-column>
     </template>
 
     <template slot="detail" slot-scope="props">
@@ -36,6 +40,7 @@
 
 <script>
   import { mapActions, mapGetters, mapState } from 'vuex';
+  import moment from 'moment';
 
   import router from '@/router';
   import JchProjectForm from '@/components/projects/Form';
@@ -63,6 +68,14 @@
         fetchProjects: 'fetchList',
         updateProject: 'update',
       }),
+
+      isProjectPublished(project) {
+        if (!project.publishedAt) {
+          return false;
+        }
+
+        return moment(project.publishedAt) < moment();
+      },
 
       fetchData() {
         const config = {
