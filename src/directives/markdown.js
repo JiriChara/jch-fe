@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it';
 import emoji from 'markdown-it-emoji';
 import implicitFigures from 'markdown-it-implicit-figures';
-import anchor from 'markdown-it-anchor';
+import anchor from 'markdown-it-toc-and-anchor';
 import twemoji from 'twemoji';
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -28,9 +28,12 @@ md.use(implicitFigures, {
   figcaption: true,
 });
 md.use(anchor, {
-  permalink: true,
-  permalinkBefore: false,
-  permalinkSymbol: '<i class="fa fa-link"></i>',
+  toc: false,
+  anchorLink: true,
+  anchorClassName: 'header-anchor',
+  anchorLinkSymbol: '',
+  anchorLinkSymbolClassName: 'fa fa-link',
+  anchorLinkBefore: false,
 });
 
 md.renderer.rules.emoji = (token, idx) => twemoji.parse(
