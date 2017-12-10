@@ -8,6 +8,10 @@
       <b-table-column label="Title">
         {{ props.row.title }}
       </b-table-column>
+
+      <b-table-column label="Published?">
+        {{ isArticlePublished(props.row) }}
+      </b-table-column>
     </template>
 
     <template slot="detail" slot-scope="props">
@@ -36,6 +40,7 @@
 
 <script>
   import { mapActions, mapGetters, mapState } from 'vuex';
+  import moment from 'moment';
 
   import router from '@/router';
   import JchArticleForm from '@/components/articles/Form';
@@ -65,6 +70,14 @@
         fetchArticles: 'fetchList',
         updateArticle: 'update',
       }),
+
+      isArticlePublished(article) {
+        if (!article.publishedAt) {
+          return false;
+        }
+
+        return moment(article.publishedAt) < moment();
+      },
 
       fetchData({ nextPage = false } = {}) {
         this.isLoadingNextArticlePage = nextPage;
