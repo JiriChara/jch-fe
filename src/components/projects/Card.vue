@@ -37,3 +37,9 @@
     },
   };
 </script>
+
+<style lang="scss" scoped>
+  .card {
+    height: 100%;
+  }
+</style>
