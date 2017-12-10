@@ -39,15 +39,3 @@ img.emoji {
    margin: 0 .05em 0 .1em;
    vertical-align: -0.1em;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  .header-anchor {
-    display: none;
-  }
-
-  &:hover {
-    .header-anchor {
-      display: initial;
-    }
-  }
-}
