@@ -85,8 +85,7 @@
         const config = {
           params: {
             page: {
-              number: nextPage ? this.currentArticlesPage + 1 : 1,
-              size: 25,
+              size: 999,
             },
           },
         };
