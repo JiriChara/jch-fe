@@ -41,7 +41,7 @@ Vue.use(Meta);
 // Global Components
 Vue.component('jch-loader', JChLoader);
 
-if (process.env === 'production') {
+if (process.env.NODE_ENV === 'production') {
   Vue.use(VueAnalytics, {
     id: 'UA-110513204-1',
     router,
