@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
         <router-link class="navbar-item logo" to="/">
